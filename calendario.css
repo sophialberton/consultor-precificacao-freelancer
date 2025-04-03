@@ -1,0 +1,450 @@
+/* 
+ * VARIÁVEIS GLOBAIS
+ * Definidas no :root para serem acessíveis em todo o documento
+ * Convenção: usar -- para nomes de variáveis CSS
+ */
+ :root {
+    --primary: #771AC9;       /* Roxo principal da identidade visual He4rt */
+    --primary-dark: #5E15A1;  /* 25% mais escuro para estados hover/active */
+    --text: #333333;         /* Cor de texto principal - quase preto */
+    --text-light: #666666;   /* Cor de texto secundário - cinza médio */
+    --background: #F8F9FA;   /* Cor de fundo da página - cinza muito claro */
+    --white: #FFFFFF;        /* Branco puro para elementos sobrepostos */
+    --border: #E1E1E1;       /* Cinza claro para bordas e divisórias */
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil para elevação */
+}
+
+/*
+ * RESET BÁSICO
+ * Remove estilos padrão dos navegadores e define configurações base
+ * O asterisco (*) seleciona TODOS os elementos HTML
+ */
+* {
+    margin: 0;  /* Remove margens padrão */
+    padding: 0; /* Remove paddings padrão */
+    box-sizing: border-box; /* Faz padding e border ficarem DENTRO da width definida */
+    font-family: 'Inter', sans-serif; /* Define a fonte padrão para todo o site */
+}
+
+/*
+ * ESTILOS DO BODY (ELEMENTO RAIZ)
+ * Define configurações básicas da página inteira
+ */
+body {
+    background-color: var(--background); /* Usa a variável de cor definida acima */
+    color: var(--text); /* Cor do texto padrão */
+    line-height: 1.6; /* Altura da linha - melhora legibilidade do texto */
+}
+
+/* 
+ * HEADER (CABEÇALHO)
+ * Contém o logo e título principal
+ * Alterado conforme solicitado - altura reduzida
+ */
+header {
+    background-color: var(--primary); /* Cor primária do projeto */
+    color: var(--white); /* Texto em branco para contraste */
+    padding: 1rem; /* REDUZIDO: 16px em todos os lados (era 2rem 1rem) */
+    text-align: center; /* Centraliza o conteúdo */
+    margin-bottom: 1.5rem; /* REDUZIDO: Espaço abaixo do header (era 2rem) */
+}
+
+/*
+ * CONTAINER DO LOGO
+ * Organiza a imagem do logo e o texto ao lado
+ * Usa Flexbox para alinhamento preciso
+ */
+.logo-container {
+    display: flex; /* Ativa o modelo Flexbox */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 1rem; /* Espaço de 16px entre logo e texto */
+    margin-bottom: 0.5rem; /* REDUZIDO: Espaço abaixo do container (era 1rem) */
+}
+
+/* 
+ * IMAGEM DO LOGO
+ * Define tamanho e comportamento da imagem
+ */
+.logo {
+    height: 32px; /* REDUZIDO: Tamanho da logo (era 40px) */
+    width: auto; /* Mantém proporção original */
+}
+
+/*
+ * HIERARQUIA DE TÍTULOS
+ * Define estilos consistentes para headings
+ */
+
+/* Título principal (h1) */
+h1 {
+    font-size: 1.75rem; /* REDUZIDO: Tamanho da fonte (era 2rem) */
+    font-weight: 700; /* Negrito */
+}
+
+/* Subtítulos (h2) */
+h2 {
+    font-size: 1.5rem; /* 24px */
+    margin-bottom: 1rem; /* Espaço abaixo */
+    color: var(--primary); /* Cor temática */
+}
+
+/* Títulos menores (h3) - usado nos cards */
+h3 {
+    font-size: 1.2rem; /* ~19px */
+    margin-bottom: 0.5rem; /* Espaço menor abaixo */
+}
+
+/* 
+ * CONTEÚDO PRINCIPAL (MAIN)
+ * Container para as seções de conteúdo
+ */
+main {
+    max-width: 1200px; /* Largura máxima para telas grandes */
+    margin: 0 auto; /* Centraliza na página */
+    padding: 0 1rem; /* Prevenção de colapso nas bordas */
+    display: grid; /* Layout em grid */
+    gap: 2rem; /* Espaço entre seções */
+}
+
+/* [O restante do CSS permanece EXATAMENTE IGUAL...] */
+
+/* Seção de explicação */
+.explanation {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+/* Grid dos fatores de cálculo */
+.factors {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* Cards de cada fator */
+.factor {
+    background-color: var(--background);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+}
+
+/* Seção da calculadora */
+.calculator {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+/* Grupos de input */
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+/* Labels dos inputs */
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+/* Estilos dos inputs */
+input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Estilos do botão */
+button {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+/* Efeito hover do botão */
+button:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Container do resultado */
+#result-container {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: var(--background);
+    border-radius: 8px;
+    text-align: center;
+    display: none;
+}
+
+/* Classe para esconder o resultado */
+#result-container.hidden {
+    display: none;
+}
+
+/* Valor do resultado */
+#result-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 1rem 0;
+}
+
+/* Texto pequeno */
+.small {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: var(--text-light);
+    font-size: 0.875rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+/* Media queries para responsividade */
+@media (min-width: 768px) {
+    main {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+   
+    h1 {
+        font-size: 2rem; /* REDUZIDO: Título em desktop (era 2.5rem) */
+    }
+}
+
+:root {
+    --primary: #771AC9;
+    --primary-dark: #5E15A1;
+    --text: #333333;
+    --text-light: #666666;
+    --background: #F8F9FA;
+    --white: #FFFFFF;
+    --border: #E1E1E1;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 1rem;
+}
+
+
+.project-input {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.input-group input {
+    flex-grow: 1;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+}
+
+button {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: var(--primary-dark);
+}
+
+#projects-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.project-tag {
+    background-color: var(--primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.project-tag .remove-project {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    font-size: 1rem;
+}
+
+.calendar-container {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.calendar-header button {
+    background: none;
+    color: var(--primary);
+    font-size: 1.2rem;
+    padding: 0.5rem;
+}
+
+#calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+}
+
+.day-header {
+    text-align: center;
+    font-weight: bold;
+    padding: 0.5rem;
+    color: var(--primary);
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    padding: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.calendar-day:hover {
+    background-color: rgba(119, 26, 201, 0.1);
+}
+
+.calendar-day.has-hours {
+    background-color: rgba(119, 26, 201, 0.2);
+    font-weight: bold;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.calc-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.calc-btn {
+    width: 100%;
+    text-align: center;
+}
+
+#calc-result {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: rgba(119, 26, 201, 0.1);
+    border-radius: 8px;
+}

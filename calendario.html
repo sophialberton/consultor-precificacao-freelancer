@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Freelas - Calendário</title>
+    <link rel="stylesheet" href="calendario.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Calculadora de Hora para Freelas</h1>
+    </header>
+
+    <main>
+        <!-- Seção de Adicionar Projeto -->
+        <section class="project-input">
+            <h2>Meus Projetos</h2>
+            <div class="input-group">
+                <input type="text" id="project-name" placeholder="Nome do projeto">
+                <button id="add-project">Adicionar</button>
+            </div>
+            <div id="projects-list"></div>
+        </section>
+
+        <!-- Calendário -->
+        <section class="calendar-container">
+            <div class="calendar-header">
+                <button id="prev-month">◀</button>
+                <h2 id="current-month">Mês Atual</h2>
+                <button id="next-month">▶</button>
+            </div>
+            <div id="calendar-grid"></div>
+        </section>
+
+        <!-- Modal de Registro de Horas -->
+        <div id="time-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3>Registrar Horas</h3>
+                <form id="time-form">
+                    <div class="form-group">
+                        <label for="selected-project">Projeto:</label>
+                        <select id="selected-project" required>
+                            <option value="">Selecione um projeto</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="hours-worked">Horas trabalhadas:</label>
+                        <input type="number" id="hours-worked" min="0.5" max="24" step="0.5" value="8" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="work-description">Descrição (opcional):</label>
+                        <textarea id="work-description" rows="3"></textarea>
+                    </div>
+                    <button type="submit">Salvar</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal de Cálculo -->
+        <div id="calc-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h3>Calcular Valores</h3>
+                <div class="calc-options">
+                    <p>O que você deseja calcular?</p>
+                    <button id="calc-hour-value" class="calc-btn">Valor da minha hora</button>
+                    <button id="calc-project-value" class="calc-btn">Valor total do projeto</button>
+                </div>
+                <div id="calc-result" class="hidden">
+                    <h4>Resultado:</h4>
+                    <p id="result-text"></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="calendario.js"></script>
+</body>
+</html>
