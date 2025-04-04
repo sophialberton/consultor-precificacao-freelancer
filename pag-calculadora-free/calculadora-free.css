@@ -1,0 +1,307 @@
+/* 
+ * VARIÁVEIS GLOBAIS
+ * Definidas no :root para serem acessíveis em todo o documento
+ * Convenção: usar -- para nomes de variáveis CSS
+ */
+ :root {
+    --primary: #311ac9;       /* Roxo principal da identidade visual He4rt */
+    --primary-dark: #5E15A1;  /* 25% mais escuro para estados hover/active */
+    --text: #333333;         /* Cor de texto principal - quase preto */
+    --text-light: #666666;   /* Cor de texto secundário - cinza médio */
+    --white: #FFFFFF;        /* Branco puro para elementos sobrepostos */
+    --border: #E1E1E1;       /* Cinza claro para bordas e divisórias */
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil para elevação */
+}
+
+body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+/*
+ * RESET BÁSICO
+ * Remove estilos padrão dos navegadores e define configurações base
+ * O asterisco (*) seleciona TODOS os elementos HTML
+ */
+* {
+    margin: 0;  /* Remove margens padrão */
+    padding: 0; /* Remove paddings padrão */
+    box-sizing: border-box; /* Faz padding e border ficarem DENTRO da width definida */
+    font-family: 'Inter', sans-serif; /* Define a fonte padrão para todo o site */
+}
+
+/*
+ * ESTILOS DO BODY (ELEMENTO RAIZ)
+ * Define configurações básicas da página inteira
+ */
+body {
+    background-color: var(--background); /* Usa a variável de cor definida acima */
+    color: var(--text); /* Cor do texto padrão */
+    line-height: 1.6; /* Altura da linha - melhora legibilidade do texto */
+}
+
+/* 
+ * HEADER (CABEÇALHO)
+ * Contém o logo e título principal
+ * Alterado conforme solicitado - altura reduzida
+ */
+header {
+    background-color: var(--primary); /* Cor primária do projeto */
+    color: var(--white); /* Texto em branco para contraste */
+    padding: 1rem; /* REDUZIDO: 16px em todos os lados (era 2rem 1rem) */
+    text-align: center; /* Centraliza o conteúdo */
+    margin-bottom: 1.5rem; /* REDUZIDO: Espaço abaixo do header (era 2rem) */
+}
+
+
+.card {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+#heading {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* Estilos da barra de progresso */
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey;
+    padding-left: 0;
+}
+
+#progressbar .active {
+    color: var(--primary);
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 15px;
+    width: 25%;
+    float: left;
+    position: relative;
+    font-weight: 400;
+}
+
+#progressbar li:before {
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    display: block;
+    font-size: 20px;
+    color: white;
+    background: lightgray;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 2px;
+    text-align: center;
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: lightgray;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    z-index: -1;
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: var(--primary);
+}
+
+#progressbar #step1:before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f155"; /* Ícone de dinheiro */
+}
+
+#progressbar #step2:before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f1ad"; /* Ícone de custos */
+}
+
+#progressbar #step3:before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f0b1"; /* Ícone de projeto */
+}
+
+#progressbar #step4:before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f00c"; /* Ícone de conclusão */
+}
+
+.progress {
+    height: 20px;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    background-color: var(--primary);
+}
+
+/* Estilos dos fieldsets */
+fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    position: relative;
+}
+
+fieldset:not(:first-of-type) {
+    display: none;
+}
+
+.fs-title {
+    font-size: 25px;
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.fieldset-content {
+    text-align: left;
+}
+
+/* Estilos dos inputs */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-control {
+    padding: 0.5em 1em;
+    border: 1px solid var(--border);
+    background-color: transparent;
+    color: var(--text);
+    font-size: 1rem;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.form-control:focus {
+    outline: 0;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(119, 26, 201, 0.2);
+}
+
+/* Estilos dos botões */
+.action-button {
+    width: 100px;
+    background: var(--primary);
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 0px 10px 5px;
+    float: right;
+}
+
+.action-button:hover, .action-button:focus {
+    background-color: var(--primary-dark);
+}
+
+.action-button-previous {
+    width: 100px;
+    background: var(--text-light);
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px 10px 0px;
+    float: right;
+}
+
+.action-button-previous:hover, .action-button-previous:focus {
+    background-color: var(--text);
+}
+
+/* Estilos dos resultados */
+.result-box {
+    background-color: var(--background);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.result-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 10px 0;
+}
+
+.cost-item {
+    background-color: var(--background);
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cost-item button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.purple-text {
+    color: var(--primary);
+}
+
+.steps {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-top: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: var(--text-light);
+    font-size: 0.875rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border);
+}

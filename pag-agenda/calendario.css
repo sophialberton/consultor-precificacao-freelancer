@@ -4,16 +4,33 @@
  * Convenção: usar -- para nomes de variáveis CSS
  */
  :root {
-    --primary: #771AC9;       /* Roxo principal da identidade visual He4rt */
+    --primary: #842fce;       /* Roxo principal da identidade visual He4rt */
     --primary-dark: #5E15A1;  /* 25% mais escuro para estados hover/active */
     --text: #333333;         /* Cor de texto principal - quase preto */
     --text-light: #666666;   /* Cor de texto secundário - cinza médio */
-    --background: #F8F9FA;   /* Cor de fundo da página - cinza muito claro */
     --white: #FFFFFF;        /* Branco puro para elementos sobrepostos */
     --border: #E1E1E1;       /* Cinza claro para bordas e divisórias */
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil para elevação */
 }
 
+body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
 /*
  * RESET BÁSICO
  * Remove estilos padrão dos navegadores e define configurações base
@@ -24,16 +41,6 @@
     padding: 0; /* Remove paddings padrão */
     box-sizing: border-box; /* Faz padding e border ficarem DENTRO da width definida */
     font-family: 'Inter', sans-serif; /* Define a fonte padrão para todo o site */
-}
-
-/*
- * ESTILOS DO BODY (ELEMENTO RAIZ)
- * Define configurações básicas da página inteira
- */
-body {
-    background-color: var(--background); /* Usa a variável de cor definida acima */
-    color: var(--text); /* Cor do texto padrão */
-    line-height: 1.6; /* Altura da linha - melhora legibilidade do texto */
 }
 
 /* 
