@@ -122,33 +122,36 @@ $(document).ready(function(){
         return true;
     }
     
-    // Cálculo do valor da hora
-    function calcularValorHora() {
-        const salario = parseFloat($("#desired-salary").val());
-        const horasDia = parseInt($("#daily-hours").val());
-        const diasSemana = parseInt($("#work-days").val());
-        const diasFerias = parseInt($("#vacation-days").val());
-        
-        // 1. Calcular dias úteis no ano (365 dias - fins de semana - férias)
-        const semanasAno = 52;
-        const finsDeSemanaPorSemana = 7 - diasSemana;
-        const totalFinsDeSemana = semanasAno * finsDeSemanaPorSemana;
-        const diasUteisAno = 365 - totalFinsDeSemana - diasFerias;
-        
-        // 2. Calcular horas trabalhadas por ano
-        const horasAno = diasUteisAno * horasDia;
-        
-        // 3. Calcular valor da hora (salário desejado / horas trabalhadas)
-        valorHora = salario / (horasAno / 12); // Valor por mês
-        
-        // 4. Adicionar custos fixos
-        const custosFixos = custos.filter(c => c.tipo === 'fixed')
-                              .reduce((soma, custo) => soma + parseFloat(custo.valor), 0);
-        
-        valorHora += custosFixos / (horasAno / 12);
-        
-        return valorHora;
-    }
+    // Cálculo do valor da hora (versão atualizada e mais realista)
+function calcularValorHora() {
+    // 1. Obter valores básicos do formulário
+    const salarioLiquido = parseFloat($("#desired-salary").val()) || 0;
+    const horasDia = parseInt($("#daily-hours").val()) || 8;
+    const diasSemana = parseInt($("#work-days").val()) || 5;
+    const diasFerias = parseInt($("#vacation-days").val()) || 30;
+    
+    // 2. Configurações adicionais para cálculo realista
+    const horasProdutivasPorDia = horasDia * 0.75; // Considera 75% do tempo como produtivo
+    const margemSeguranca = 1.4; // 40% para impostos, dias sem trabalho e lucro
+    
+    // 3. Calcular dias úteis no ano (365 dias - fins de semana - férias)
+    const semanasAno = 52;
+    const finsDeSemanaPorSemana = 7 - diasSemana;
+    const totalFinsDeSemana = semanasAno * finsDeSemanaPorSemana;
+    const diasUteisAno = 365 - totalFinsDeSemana - diasFerias;
+    
+    // 4. Calcular horas produtivas por ano
+    const horasProdutivasAno = diasUteisAno * horasProdutivasPorDia;
+    
+    // 5. Somar todos os custos fixos
+    const custosFixos = custos.filter(c => c.tipo === 'fixed')
+                          .reduce((soma, custo) => soma + parseFloat(custo.valor), 0);
+    
+    // 6. Cálculo final com margem de segurança
+    valorHora = (salarioLiquido + custosFixos) * margemSeguranca / (horasProdutivasAno / 12);
+    
+    return valorHora;
+}
     
     // Atualiza o preview do valor hora
     function atualizarPreviaValorHora() {
