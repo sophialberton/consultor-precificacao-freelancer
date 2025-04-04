@@ -1,120 +1,120 @@
 $(document).ready(function(){
     // Variáveis globais
-    let costs = [];
-    let hourValue = 0;
+    let custos = [];
+    let valorHora = 0;
     
     // Configuração do formulário em etapas
-    var current_fs, next_fs, previous_fs;
-    var current = 1;
-    var steps = $("fieldset").length;
+    var etapaAtual, proximaEtapa, etapaAnterior;
+    var passoAtual = 1;
+    var totalPassos = $("fieldset").length;
     
-    setProgressBar(current);
+    atualizarBarraProgresso(passoAtual);
     
     // Botão Próximo
     $(".next").click(function(){
         // Validação antes de avançar
-        if(current === 1) {
-            if(!validateStep1()) return;
-            calculateHourValue();
-            updateHourValuePreview();
-        } else if(current === 2) {
+        if(passoAtual === 1) {
+            if(!validarEtapa1()) return;
+            calcularValorHora();
+            atualizarPreviaValorHora();
+        } else if(passoAtual === 2) {
             // Validação opcional para custos
-        } else if(current === 3) {
-            calculateProjectValue();
+        } else if(passoAtual === 3) {
+            calcularValorProjeto();
         }
         
-        current_fs = $(this).parent();
-        next_fs = $(this).parent().next();
+        etapaAtual = $(this).parent();
+        proximaEtapa = $(this).parent().next();
         
-        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+        $("#progressbar li").eq($("fieldset").index(proximaEtapa)).addClass("active");
         
-        next_fs.show();
-        current_fs.animate({opacity: 0}, {
+        proximaEtapa.show();
+        etapaAtual.animate({opacity: 0}, {
             step: function(now) {
-                current_fs.css({
+                etapaAtual.css({
                     'display': 'none',
                     'position': 'relative'
                 });
-                next_fs.css({'opacity': 1});
+                proximaEtapa.css({'opacity': 1});
             },
             duration: 500
         });
-        setProgressBar(++current);
+        atualizarBarraProgresso(++passoAtual);
     });
     
     // Botão Anterior
     $(".previous").click(function(){
-        current_fs = $(this).parent();
-        previous_fs = $(this).parent().prev();
+        etapaAtual = $(this).parent();
+        etapaAnterior = $(this).parent().prev();
         
-        $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+        $("#progressbar li").eq($("fieldset").index(etapaAtual)).removeClass("active");
         
-        previous_fs.show();
-        current_fs.animate({opacity: 0}, {
+        etapaAnterior.show();
+        etapaAtual.animate({opacity: 0}, {
             step: function(now) {
-                current_fs.css({
+                etapaAtual.css({
                     'display': 'none',
                     'position': 'relative'
                 });
-                previous_fs.css({'opacity': 1});
+                etapaAnterior.css({'opacity': 1});
             },
             duration: 500
         });
-        setProgressBar(--current);
+        atualizarBarraProgresso(--passoAtual);
     });
     
     // Atualiza a barra de progresso
-    function setProgressBar(curStep){
-        var percent = parseFloat(100 / steps) * curStep;
-        percent = percent.toFixed();
+    function atualizarBarraProgresso(passoAtual){
+        var percentual = parseFloat(100 / totalPassos) * passoAtual;
+        percentual = percentual.toFixed();
         $(".progress-bar")
-            .css("width",percent+"%")
-            .attr("aria-valuenow", percent);
+            .css("width",percentual+"%")
+            .attr("aria-valuenow", percentual);
     }
     
     // Validação da Etapa 1
-    function validateStep1() {
-        const salary = parseFloat($("#desired-salary").val());
-        const dailyHours = parseInt($("#daily-hours").val());
-        const workDays = parseInt($("#work-days").val());
-        const vacationDays = parseInt($("#vacation-days").val());
+    function validarEtapa1() {
+        const salario = parseFloat($("#desired-salary").val());
+        const horasDia = parseInt($("#daily-hours").val());
+        const diasSemana = parseInt($("#work-days").val());
+        const diasFerias = parseInt($("#vacation-days").val());
         
-        if(isNaN(salary)) {
+        if(isNaN(salario)) {
             alert("Por favor, insira um salário válido.");
             return false;
         }
         
-        if(salary <= 0) {
+        if(salario <= 0) {
             alert("O salário deve ser maior que zero.");
             return false;
         }
         
-        if(isNaN(dailyHours)){ 
+        if(isNaN(horasDia)) {
             alert("Por favor, insira horas diárias válidas.");
             return false;
         }
         
-        if(dailyHours <= 0 || dailyHours > 24) {
+        if(horasDia <= 0 || horasDia > 24) {
             alert("As horas diárias devem estar entre 1 e 24.");
             return false;
         }
         
-        if(isNaN(workDays)) {
+        if(isNaN(diasSemana)) {
             alert("Por favor, insira dias de trabalho válidos.");
             return false;
         }
         
-        if(workDays <= 0 || workDays > 7) {
+        if(diasSemana <= 0 || diasSemana > 7) {
             alert("Os dias de trabalho devem estar entre 1 e 7.");
             return false;
         }
         
-        if(isNaN(vacationDays)) {
+        if(isNaN(diasFerias)) {
             alert("Por favor, insira dias de férias válidos.");
             return false;
         }
         
-        if(vacationDays < 0 || vacationDays > 365) {
+        if(diasFerias < 0 || diasFerias > 365) {
             alert("Os dias de férias devem estar entre 0 e 365.");
             return false;
         }
@@ -123,68 +123,68 @@ $(document).ready(function(){
     }
     
     // Cálculo do valor da hora
-    function calculateHourValue() {
-        const salary = parseFloat($("#desired-salary").val());
-        const dailyHours = parseInt($("#daily-hours").val());
-        const workDays = parseInt($("#work-days").val());
-        const vacationDays = parseInt($("#vacation-days").val());
+    function calcularValorHora() {
+        const salario = parseFloat($("#desired-salary").val());
+        const horasDia = parseInt($("#daily-hours").val());
+        const diasSemana = parseInt($("#work-days").val());
+        const diasFerias = parseInt($("#vacation-days").val());
         
         // 1. Calcular dias úteis no ano (365 dias - fins de semana - férias)
-        const weeksPerYear = 52;
-        const weekendDaysPerWeek = 7 - workDays;
-        const totalWeekendDays = weeksPerYear * weekendDaysPerWeek;
-        const workingDaysPerYear = 365 - totalWeekendDays - vacationDays;
+        const semanasAno = 52;
+        const finsDeSemanaPorSemana = 7 - diasSemana;
+        const totalFinsDeSemana = semanasAno * finsDeSemanaPorSemana;
+        const diasUteisAno = 365 - totalFinsDeSemana - diasFerias;
         
         // 2. Calcular horas trabalhadas por ano
-        const hoursPerYear = workingDaysPerYear * dailyHours;
+        const horasAno = diasUteisAno * horasDia;
         
         // 3. Calcular valor da hora (salário desejado / horas trabalhadas)
-        hourValue = salary / (hoursPerYear / 12); // Valor por mês
+        valorHora = salario / (horasAno / 12); // Valor por mês
         
         // 4. Adicionar custos fixos
-        const fixedCosts = costs.filter(c => c.type === 'fixed')
-                              .reduce((sum, cost) => sum + parseFloat(cost.value), 0);
+        const custosFixos = custos.filter(c => c.tipo === 'fixed')
+                              .reduce((soma, custo) => soma + parseFloat(custo.valor), 0);
         
-        hourValue += fixedCosts / (hoursPerYear / 12);
+        valorHora += custosFixos / (horasAno / 12);
         
-        return hourValue;
+        return valorHora;
     }
     
     // Atualiza o preview do valor hora
-    function updateHourValuePreview() {
-        $("#hour-value-preview").text("R$ " + hourValue.toFixed(2).replace(".", ","));
+    function atualizarPreviaValorHora() {
+        $("#hour-value-preview").text("R$ " + valorHora.toFixed(2).replace(".", ","));
     }
     
     // Adicionar custo
     $("#add-cost").click(function() {
-        const description = $("#cost-description").val().trim();
-        const value = parseFloat($("#cost-value").val());
-        const type = $("#cost-type").val();
+        const descricao = $("#cost-description").val().trim();
+        const valor = parseFloat($("#cost-value").val());
+        const tipo = $("#cost-type").val();
         
-        if(!description) {
+        if(!descricao) {
             alert("Por favor, insira uma descrição para o custo.");
             return;
         }
         
-        if(isNaN(value)) {
+        if(isNaN(valor)) {
             alert("Por favor, insira um valor válido para o custo.");
             return;
         }
         
-        if(value <= 0) {
+        if(valor <= 0) {
             alert("O valor do custo deve ser maior que zero.");
             return;
         }
         
-        const cost = {
+        const custo = {
             id: Date.now(),
-            description,
-            value,
-            type
+            descricao: descricao,
+            valor: valor,
+            tipo: tipo
         };
         
-        costs.push(cost);
-        renderCosts();
+        custos.push(custo);
+        renderizarCustos();
         
         // Limpar campos
         $("#cost-description").val("");
@@ -192,107 +192,107 @@ $(document).ready(function(){
     });
     
     // Renderiza a lista de custos
-    function renderCosts() {
+    function renderizarCustos() {
         $("#costs-container").empty();
         
-        costs.forEach(cost => {
-            const costElement = $(`
-                <div class="cost-item" data-id="${cost.id}">
+        custos.forEach(custo => {
+            const elementoCusto = $(`
+                <div class="cost-item" data-id="${custo.id}">
                     <div>
-                        <strong>${cost.description}</strong><br>
-                        R$ ${cost.value.toFixed(2).replace(".", ",")} (${cost.type === 'fixed' ? 'Fixo' : 'Variável'})
+                        <strong>${custo.descricao}</strong><br>
+                        R$ ${custo.valor.toFixed(2).replace(".", ",")} (${custo.tipo === 'fixed' ? 'Fixo' : 'Variável'})
                     </div>
                     <button class="remove-cost">Remover</button>
                 </div>
             `);
-            $("#costs-container").append(costElement);
+            $("#costs-container").append(elementoCusto);
         });
         
         // Adiciona evento de remoção
         $(".remove-cost").click(function() {
             const id = parseInt($(this).parent().attr("data-id"));
-            costs = costs.filter(c => c.id !== id);
-            renderCosts();
+            custos = custos.filter(c => c.id !== id);
+            renderizarCustos();
         });
     }
     
     // Cálculo do valor do projeto
-    function calculateProjectValue() {
-        const projectDailyHours = parseInt($("#project-daily-hours").val());
-        const projectDays = parseInt($("#project-days").val());
+    function calcularValorProjeto() {
+        const horasDiaProjeto = parseInt($("#project-daily-hours").val());
+        const diasProjeto = parseInt($("#project-days").val());
         
-        if(isNaN(projectDailyHours)) {
+        if(isNaN(horasDiaProjeto)) {
             alert("Por favor, insira horas diárias válidas para o projeto.");
             return;
         }
         
-        if(projectDailyHours <= 0 || projectDailyHours > 24) {
+        if(horasDiaProjeto <= 0 || horasDiaProjeto > 24) {
             alert("As horas diárias do projeto devem estar entre 1 e 24.");
             return;
         }
         
-        if(isNaN(projectDays)) {
+        if(isNaN(diasProjeto)) {
             alert("Por favor, insira dias válidos para o projeto.");
             return;
         }
         
-        if(projectDays <= 0) {
+        if(diasProjeto <= 0) {
             alert("O projeto deve ter pelo menos 1 dia de duração.");
             return;
         }
         
         // Calcular horas totais do projeto
-        const totalHours = projectDailyHours * projectDays;
+        const horasTotaisProjeto = horasDiaProjeto * diasProjeto;
         
         // Calcular valor base do projeto
-        let projectValue = totalHours * hourValue;
+        let valorProjeto = horasTotaisProjeto * valorHora;
         
         // Adicionar custos variáveis
-        const variableCosts = costs.filter(c => c.type === 'variable')
-                                 .reduce((sum, cost) => sum + parseFloat(cost.value), 0);
+        const custosVariaveis = custos.filter(c => c.tipo === 'variable')
+                                 .reduce((soma, custo) => soma + parseFloat(custo.valor), 0);
         
-        projectValue += variableCosts;
+        valorProjeto += custosVariaveis;
         
         // Atualizar exibição
-        $("#project-value-result").text("R$ " + projectValue.toFixed(2).replace(".", ","));
-        $("#final-hour-value").text("R$ " + hourValue.toFixed(2).replace(".", ","));
+        $("#project-value-result").text("R$ " + valorProjeto.toFixed(2).replace(".", ","));
+        $("#final-hour-value").text("R$ " + valorHora.toFixed(2).replace(".", ","));
         
         // Atualizar resumo de custos
-        renderCostsSummary();
+        renderizarResumoCustos();
     }
     
     // Renderiza o resumo de custos
-    function renderCostsSummary() {
+    function renderizarResumoCustos() {
         $("#costs-summary").empty();
         
-        const fixedCosts = costs.filter(c => c.type === 'fixed');
-        const variableCosts = costs.filter(c => c.type === 'variable');
+        const custosFixos = custos.filter(c => c.tipo === 'fixed');
+        const custosVariaveis = custos.filter(c => c.tipo === 'variable');
         
-        if(fixedCosts.length > 0) {
+        if(custosFixos.length > 0) {
             $("#costs-summary").append("<h5>Custos Fixos</h5>");
-            fixedCosts.forEach(cost => {
+            custosFixos.forEach(custo => {
                 $("#costs-summary").append(`
                     <div class="cost-item">
-                        <div>${cost.description}</div>
-                        <div>R$ ${cost.value.toFixed(2).replace(".", ",")}</div>
+                        <div>${custo.descricao}</div>
+                        <div>R$ ${custo.valor.toFixed(2).replace(".", ",")}</div>
                     </div>
                 `);
             });
         }
         
-        if(variableCosts.length > 0) {
+        if(custosVariaveis.length > 0) {
             $("#costs-summary").append("<h5 class='mt-3'>Custos Variáveis</h5>");
-            variableCosts.forEach(cost => {
+            custosVariaveis.forEach(custo => {
                 $("#costs-summary").append(`
                     <div class="cost-item">
-                        <div>${cost.description}</div>
-                        <div>R$ ${cost.value.toFixed(2).replace(".", ",")}</div>
+                        <div>${custo.descricao}</div>
+                        <div>R$ ${custo.valor.toFixed(2).replace(".", ",")}</div>
                     </div>
                 `);
             });
         }
         
-        if(costs.length === 0) {
+        if(custos.length === 0) {
             $("#costs-summary").append("<p>Nenhum custo adicionado</p>");
         }
     }
@@ -300,11 +300,11 @@ $(document).ready(function(){
     // Botão recalculcar
     $("#recalculate").click(function() {
         // Volta para a primeira etapa
-        current = 1;
+        passoAtual = 1;
         $("fieldset").hide();
         $("fieldset:first").show();
         $("#progressbar li").removeClass("active");
         $("#progressbar li:first").addClass("active");
-        setProgressBar(current);
+        atualizarBarraProgresso(passoAtual);
     });
 });
