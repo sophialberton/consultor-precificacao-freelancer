@@ -49,7 +49,7 @@ body {
  * Define configurações básicas da página inteira
  */
 body {
-    background-color: var(--background); /* Usa a variável de cor definida acima */
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     color: var(--text); /* Cor do texto padrão */
     line-height: 1.6; /* Altura da linha - melhora legibilidade do texto */
 }
@@ -60,7 +60,7 @@ body {
  * Alterado conforme solicitado - altura reduzida
  */
 header {
-    background-color: var(--primary); /* Cor primária do projeto */
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     color: var(--white); /* Texto em branco para contraste */
     padding: 1rem; /* REDUZIDO: 16px em todos os lados (era 2rem 1rem) */
     text-align: center; /* Centraliza o conteúdo */
