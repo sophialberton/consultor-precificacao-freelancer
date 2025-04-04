@@ -156,11 +156,16 @@ label {
 
 /* Estilos dos inputs */
 input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid var(--border);
-    border-radius: 4px;
+    padding: 0.5em 1em;
+    border: 0;
+    background-color: transparent;
+    color: var(--text);
     font-size: 1rem;
+    width: 100%;
+}
+
+input:focus {
+    outline: 0;
 }
 
 /* Estilos do botão */
@@ -180,6 +185,30 @@ button {
 /* Efeito hover do botão */
 button:hover {
     background-color: var(--primary-dark);
+}
+
+form {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+fieldset {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    padding: 0.5em 1em 1em;
+    position: relative; /* Para o legend ficar posicionado corretamente */
+}
+
+legend {
+    margin-left: 0.75em;
+    padding-inline: 0.5em;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-light);
 }
 
 /* Container do resultado */
