@@ -2,7 +2,7 @@ $(document).ready(function(){
     // Variáveis globais
     let custos = [];
     let valorHora = 0;
-    
+    //Comentário init
     // Configuração do formulário em etapas
     var etapaAtual, proximaEtapa, etapaAnterior;
     var passoAtual = 1;
