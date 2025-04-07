@@ -1,82 +1,7 @@
-/* 
- * VARIÁVEIS GLOBAIS
- * Definidas no :root para serem acessíveis em todo o documento
- * Convenção: usar -- para nomes de variáveis CSS
- */
- :root {
-    --primary: #311ac9;       /* Roxo principal da identidade visual He4rt */
-    --primary-dark: #5E15A1;  /* 25% mais escuro para estados hover/active */
-    --text: #333333;         /* Cor de texto principal - quase preto */
-    --text-light: #666666;   /* Cor de texto secundário - cinza médio */
-    --white: #FFFFFF;        /* Branco puro para elementos sobrepostos */
-    --border: #E1E1E1;       /* Cinza claro para bordas e divisórias */
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil para elevação */
-}
-
-body {
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradient 15s ease infinite;
-	height: 100vh;
-}
-
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
-
-/*
- * RESET BÁSICO
- * Remove estilos padrão dos navegadores e define configurações base
- * O asterisco (*) seleciona TODOS os elementos HTML
- */
-* {
-    margin: 0;  /* Remove margens padrão */
-    padding: 0; /* Remove paddings padrão */
-    box-sizing: border-box; /* Faz padding e border ficarem DENTRO da width definida */
-    font-family: 'Inter', sans-serif; /* Define a fonte padrão para todo o site */
-}
-
-/*
- * ESTILOS DO BODY (ELEMENTO RAIZ)
- * Define configurações básicas da página inteira
- */
-body {
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    color: var(--text); /* Cor do texto padrão */
-    line-height: 1.6; /* Altura da linha - melhora legibilidade do texto */
-}
-
-/* 
- * HEADER (CABEÇALHO)
- * Contém o logo e título principal
- * Alterado conforme solicitado - altura reduzida
- */
-header {
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    color: var(--white); /* Texto em branco para contraste */
-    padding: 1rem; /* REDUZIDO: 16px em todos os lados (era 2rem 1rem) */
-    text-align: center; /* Centraliza o conteúdo */
-    margin-bottom: 1.5rem; /* REDUZIDO: Espaço abaixo do header (era 2rem) */
-}
-
-
 .card {
     border: none;
     border-radius: 0.5rem;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-#heading {
-    color: var(--primary);
-    font-weight: 600;
 }
 
 /* Estilos da barra de progresso */
@@ -165,9 +90,8 @@ header {
 
 /* Estilos dos fieldsets */
 fieldset {
-    background: white;
+    background: #ffffff;
     border: 0 none;
-    border-radius: 0.5rem;
     box-sizing: border-box;
     width: 100%;
     margin: 0;
@@ -295,13 +219,4 @@ fieldset:not(:first-of-type) {
     font-size: 1.2rem;
     color: var(--text-light);
     margin-top: 10px;
-}
-
-footer {
-    text-align: center;
-    padding: 1.5rem;
-    color: var(--text-light);
-    font-size: 0.875rem;
-    margin-top: 2rem;
-    border-top: 1px solid var(--border);
 }
