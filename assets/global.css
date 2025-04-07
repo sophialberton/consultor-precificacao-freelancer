@@ -35,7 +35,11 @@ body {
 
 /* HEADER PADRÃO */
 header {
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    backdrop-filter: blur(6px) saturate(176%);
+    -webkit-backdrop-filter: blur(6px) saturate(176%);
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
     color: var(--white);
     padding: 1rem;
     text-align: center;
@@ -44,6 +48,7 @@ header {
 
 /* FOOTER PADRÃO */
 footer {
+    
     text-align: center;
     padding: 1.5rem;
     color: var(--text-light);
