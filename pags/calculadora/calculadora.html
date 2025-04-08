@@ -23,18 +23,19 @@
 
     <div class="container-fluid py-5">
         <div class="row justify-content-center">
-            <div class="col-11 col-sm-10 col-md-10 col-lg-8 col-xl-6 text-center p-0">
+            <!-- <div class="col-11 col-sm-10 col-md-10 col-lg-8 col-xl-6 text-center p-0">-->
+            <div class="col-11 col-sm-9 col-md-8 col-lg-6 col-xl-4 text-center p-0">
                 <div class="card px-0 pt-4 pb-0">
                     <h2 id="heading">Calculadora de Valor Hora</h2>
                     <p>Preencha todas as etapas para calcular seu valor hora ideal</p>
 
-                    <form id="calculator-form">
+                    <form id="formulario-calculadora">
                         <!-- Barra de progresso -->
-                        <ul id="progressbar">
-                            <li class="active" id="step1"><strong>Renda</strong></li>
-                            <li id="step2"><strong>Custos</strong></li>
-                            <li id="step3"><strong>Projeto</strong></li>
-                            <li id="step4"><strong>Resultado</strong></li>
+                        <ul id="barra-progresso">
+                            <li class="ativo" id="passo1"><strong>Renda</strong></li>
+                            <li id="passo2"><strong>Custos</strong></li>
+                            <li id="passo3"><strong>Projeto</strong></li>
+                            <li id="passo4"><strong>Resultado</strong></li>
                         </ul>
 
                         <div class="progress">
@@ -55,29 +56,29 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="desired-salary">Salário líquido desejado (R$)</label>
-                                    <input type="number" id="desired-salary" class="form-control" required min="1"
+                                    <label for="salario-desejado">Salário líquido desejado (R$)</label>
+                                    <input type="number" id="salario-desejado" class="form-control" required min="1"
                                         step="0.01">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="daily-hours">Horas trabalhadas por dia</label>
-                                    <input type="number" id="daily-hours" class="form-control" required min="1"
+                                    <label for="horas-diarias">Horas trabalhadas por dia</label>
+                                    <input type="number" id="horas-diarias" class="form-control" required min="1"
                                         max="24">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="work-days">Dias trabalhados por semana</label>
-                                    <input type="number" id="work-days" class="form-control" required min="1" max="7">
+                                    <label for="dias-trabalho">Dias trabalhados por semana</label>
+                                    <input type="number" id="dias-trabalho" class="form-control" required min="1" max="7">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="vacation-days">Dias de férias por ano</label>
-                                    <input type="number" id="vacation-days" class="form-control" required min="0"
+                                    <label for="dias-ferias">Dias de férias por ano</label>
+                                    <input type="number" id="dias-ferias" class="form-control" required min="0"
                                         max="365">
                                 </div>
                             </div>
-                            <input type="button" name="next" class="next action-button" value="Próximo" />
+                            <input type="button" name="proximo" class="proximo botao-acao" value="Próximo" />
                         </fieldset>
 
                         <!-- Etapa 2: Custos -->
@@ -92,38 +93,38 @@
                                     </div>
                                 </div>
 
-                                <div id="costs-container">
+                                <div id="container-custos">
                                     <!-- Custos serão adicionados aqui dinamicamente -->
                                 </div>
 
                                 <div class="mb-4">
                                     <h4>Adicionar Novo Custo</h4>
                                     <div class="form-group">
-                                        <label for="cost-description">Descrição</label>
-                                        <input type="text" id="cost-description" class="form-control"
+                                        <label for="descricao-custo">Descrição</label>
+                                        <input type="text" id="descricao-custo" class="form-control"
                                             placeholder="Ex: Internet, Aluguel...">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="cost-value">Valor (R$)</label>
-                                        <input type="number" id="cost-value" class="form-control" step="0.01" min="0">
+                                        <label for="valor-custo">Valor (R$)</label>
+                                        <input type="number" id="valor-custo" class="form-control" step="0.01" min="0">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="cost-type">Tipo</label>
-                                        <select id="cost-type" class="form-control">
-                                            <option value="fixed">Custo Fixo (mensal)</option>
-                                            <option value="variable">Custo Variável (por projeto)</option>
+                                        <label for="tipo-custo">Tipo</label>
+                                        <select id="tipo-custo" class="form-control">
+                                            <option value="fixo">Custo Fixo (mensal)</option>
+                                            <option value="variavel">Custo Variável (por projeto)</option>
                                         </select>
                                     </div>
 
-                                    <button type="button" class="btn btn-secondary" id="add-cost">Adicionar
+                                    <button type="button" class="btn btn-secondary" id="adicionar-custo">Adicionar
                                         Custo</button>
                                 </div>
                             </div>
-                            <input type="button" name="previous" class="previous action-button-previous"
+                            <input type="button" name="anterior" class="anterior botao-acao-anterior"
                                 value="Anterior" />
-                            <input type="button" name="next" class="next action-button" value="Próximo" />
+                            <input type="button" name="proximo" class="proximo botao-acao" value="Próximo" />
                         </fieldset>
 
                         <!-- Etapa 3: Cálculo do Projeto -->
@@ -140,23 +141,23 @@
 
                                 <div class="result-box">
                                     <p>Seu valor hora calculado é:</p>
-                                    <div class="result-value" id="hour-value-preview">R$ 0,00</div>
+                                    <div class="result-value" id="previa-valor-hora">R$ 0,00</div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="project-daily-hours">Horas trabalhadas por dia no projeto</label>
-                                    <input type="number" id="project-daily-hours" class="form-control" min="1" max="24"
+                                    <label for="horas-diarias-projeto">Horas trabalhadas por dia no projeto</label>
+                                    <input type="number" id="horas-diarias-projeto" class="form-control" min="1" max="24"
                                         value="8">
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="project-days">Dias dedicados ao projeto</label>
-                                    <input type="number" id="project-days" class="form-control" min="1">
+                                    <label for="dias-projeto">Dias dedicados ao projeto</label>
+                                    <input type="number" id="dias-projeto" class="form-control" min="1">
                                 </div>
                             </div>
-                            <input type="button" name="previous" class="previous action-button-previous"
+                            <input type="button" name="anterior" class="anterior botao-acao-anterior"
                                 value="Anterior" />
-                            <input type="button" name="next" class="next action-button" value="Próximo" />
+                            <input type="button" name="proximo" class="proximo botao-acao" value="Próximo" />
                         </fieldset>
 
                         <!-- Etapa 4: Resultado Final -->
@@ -173,21 +174,21 @@
 
                                 <div class="result-box">
                                     <h3 class="purple-text">Valor do Projeto</h3>
-                                    <div class="result-value" id="project-value-result">R$ 0,00</div>
+                                    <div class="result-value" id="resultado-valor-projeto">R$ 0,00</div>
                                     <p>Baseado no seu valor hora:</p>
-                                    <div class="result-value" id="final-hour-value">R$ 0,00</div>
+                                    <div class="result-value" id="valor-hora-final">R$ 0,00</div>
 
                                     <div class="mt-4">
                                         <h4>Resumo dos Custos</h4>
-                                        <div id="costs-summary">
+                                        <div id="resumo-custos">
                                             <!-- Resumo dos custos será exibido aqui -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <input type="button" name="previous" class="previous action-button-previous"
+                            <input type="button" name="anterior" class="anterior botao-acao-anterior"
                                 value="Anterior" />
-                            <button type="button" class="action-button" id="recalculate">Recalcular</button>
+                            <button type="button" class="botao-acao" id="recalcular">Recalcular</button>
                         </fieldset>
                     </form>
                 </div>
