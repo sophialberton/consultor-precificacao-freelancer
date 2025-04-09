@@ -1,84 +1,95 @@
 /* VARIÁVEIS GLOBAIS */
 :root {
-    --primary: #89a2e7;
-    --primary-dark: #a059e2;
-    --text: #333333;
-    --text-light: #666666;
-    --white: #FFFFFF;
-    --border: #E1E1E1;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Define variáveis CSS reutilizáveis em todo o projeto */
+    --primary: #89a2e7; /* Cor primária (azul claro) */
+    --primary-dark: #a059e2; /* Versão mais escura da cor primária (roxo) */
+    --text: #333333; /* Cor padrão para textos (cinza escuro) */
+    --text-light: #666666; /* Cor para textos secundários (cinza médio) */
+    --white: #FFFFFF; /* Cor branca */
+    --border: #E1E1E1; /* Cor para bordas (cinza claro) */
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra padrão para elementos */
 }
 
 /* RESET E FONTE */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    /* Reset básico para todos os elementos */
+    margin: 0; /* Remove margens padrão */
+    padding: 0; /* Remove paddings padrão */
+    box-sizing: border-box; /* Faz padding e border serem incluídos na largura/altura */
+    font-family: 'Inter', sans-serif; /* Define a fonte padrão */
 }
 
 /* FUNDO ANIMADO */
 body {
-    background: linear-gradient(-45deg, #d874d8, #e73c7e, #66c1e2, #d52338);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-    height: 100vh;
-    color: var(--text);
-    line-height: 1.6;
+    /* Estilos para o elemento body */
+    background: linear-gradient(-45deg, #d874d8, #e73c7e, #66c1e2, #d52338); /* Gradiente colorido */
+    background-size: 400% 400%; /* Tamanho do gradiente para permitir animação */
+    animation: gradient 15s ease infinite; /* Animação do gradiente */
+    height: 100vh; /* Altura total da viewport */
+    color: var(--text); /* Cor do texto usando variável */
+    line-height: 1.6; /* Espaçamento entre linhas */
 }
 
+/* Animação do gradiente de fundo */
 @keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% { background-position: 0% 50%; } /* Posição inicial do gradiente */
+    50% { background-position: 100% 50%; } /* Posição intermediária */
+    100% { background-position: 0% 50%; } /* Retorna à posição inicial */
 }
 
 /* HEADER PADRÃO */
 header {
-    backdrop-filter: blur(6px) saturate(176%);
-    -webkit-backdrop-filter: blur(6px) saturate(176%);
-    background-color: rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    border: 1px solid rgba(209, 213, 219, 0.3);
-    color: var(--white);
-    padding: 1rem;
-    text-align: center;
-    margin-bottom: 1.5rem;
+    /* Estilos para o cabeçalho */
+    backdrop-filter: blur(6px) saturate(176%); /* Efeito de desfoque no fundo */
+    -webkit-backdrop-filter: blur(6px) saturate(176%); /* Versão para Safari */
+    background-color: rgba(255, 255, 255, 0.08); /* Fundo semi-transparente */
+    border-radius: 12px; /* Bordas arredondadas */
+    border: 1px solid rgba(209, 213, 219, 0.3); /* Borda sutil */
+    color: var(--white); /* Cor do texto */
+    padding: 1rem; /* Espaçamento interno */
+    text-align: center; /* Alinhamento do texto */
+    margin-bottom: 1.5rem; /* Margem inferior */
 }
 
 /* FOOTER PADRÃO */
 footer {
-    
-    text-align: center;
-    padding: 1.5rem;
-    color: var(--text-light);
-    font-size: 0.875rem;
-    margin-top: 2rem;
-    border-top: 1px solid var(--border);
+    /* Estilos para o rodapé */
+    text-align: center; /* Alinhamento do texto */
+    padding: 1.5rem; /* Espaçamento interno */
+    color: var(--text-light); /* Cor do texto mais clara */
+    font-size: 0.875rem; /* Tamanho menor da fonte */
+    margin-top: 2rem; /* Margem superior */
+    border-top: 1px solid var(--border); /* Borda superior */
 }
 
+/* LINKS DE NAVEGAÇÃO */
 .nav-links {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
+    /* Container dos links de navegação */
+    margin-top: 1rem; /* Margem superior */
+    display: flex; /* Layout flexível */
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 1rem; /* Espaço entre os itens */
+    flex-wrap: wrap; /* Permite quebra de linha */
 }
 
+/* ESTILOS DOS LINKS */
 .nav-links a {
-    text-decoration: none;
-    color: var(--white);
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 0.5rem 1.25rem;
-    border: 2px solid var(--white);
-    border-radius: 8px;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    /* Estilos base para os links */
+    text-decoration: none; /* Remove sublinhado */
+    color: var(--white); /* Cor do texto */
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
+    padding: 0.5rem 1.25rem; /* Espaçamento interno */
+    border: 2px solid var(--white); /* Borda branca */
+    border-radius: 8px; /* Bordas arredondadas */
+    font-weight: 600; /* Peso da fonte (semi-negrito) */
+    transition: all 0.3s ease; /* Transição suave para hover */
 }
 
+/* EFEITO HOVER NOS LINKS */
 .nav-links a:hover {
-    background-color: var(--white);
-    color: var(--primary);
-    transform: scale(1.05);
-    border-color: var(--white);
+    /* Estilos quando o mouse passa sobre o link */
+    background-color: var(--white); /* Fundo branco */
+    color: var(--primary); /* Cor do texto muda para primária */
+    transform: scale(1.05); /* Efeito de zoom sutil */
+    border-color: var(--white); /* Mantém borda branca */
 }
