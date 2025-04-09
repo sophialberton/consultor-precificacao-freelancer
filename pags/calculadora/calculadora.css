@@ -5,18 +5,18 @@
 }
 
 /* Estilos da barra de progresso */
-#progressbar {
+#barra-progresso {
     margin-bottom: 30px;
     overflow: hidden;
     color: lightgrey;
     padding-left: 0;
 }
 
-#progressbar .active {
+#barra-progresso .ativo {
     color: var(--primary);
 }
 
-#progressbar li {
+#barra-progresso li {
     list-style-type: none;
     font-size: 15px;
     width: 25%;
@@ -25,7 +25,7 @@
     font-weight: 400;
 }
 
-#progressbar li:before {
+#barra-progresso li:before {
     width: 50px;
     height: 50px;
     line-height: 45px;
@@ -39,7 +39,7 @@
     text-align: center;
 }
 
-#progressbar li:after {
+#barra-progresso li:after {
     content: '';
     width: 100%;
     height: 2px;
@@ -50,30 +50,30 @@
     z-index: -1;
 }
 
-#progressbar li.active:before,
-#progressbar li.active:after {
+#barra-progresso li.ativo:before,
+#barra-progresso li.ativo:after {
     background: var(--primary);
 }
 
-#progressbar #step1:before {
+#barra-progresso #passo1:before {
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
     content: "\f155"; /* Ícone de dinheiro */
 }
 
-#progressbar #step2:before {
+#barra-progresso #passo2:before {
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
     content: "\f1ad"; /* Ícone de custos */
 }
 
-#progressbar #step3:before {
+#barra-progresso #passo3:before {
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
     content: "\f0b1"; /* Ícone de projeto */
 }
 
-#progressbar #step4:before {
+#barra-progresso #passo4:before {
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
     content: "\f00c"; /* Ícone de conclusão */
@@ -142,7 +142,7 @@ fieldset:not(:first-of-type) {
 }
 
 /* Estilos dos botões */
-.action-button {
+.botao-acao {
     width: 100px;
     background: var(--primary);
     font-weight: bold;
@@ -155,11 +155,11 @@ fieldset:not(:first-of-type) {
     float: right;
 }
 
-.action-button:hover, .action-button:focus {
+.botao-acao:hover, .botao-acao:focus {
     background-color: var(--primary-dark);
 }
 
-.action-button-previous {
+.botao-acao-anterior {
     width: 100px;
     background: var(--text-light);
     font-weight: bold;
@@ -172,7 +172,7 @@ fieldset:not(:first-of-type) {
     float: right;
 }
 
-.action-button-previous:hover, .action-button-previous:focus {
+.botao-acao-anterior:hover, .botao-acao-anterior:focus {
     background-color: var(--text);
 }
 
@@ -192,7 +192,7 @@ fieldset:not(:first-of-type) {
     margin: 10px 0;
 }
 
-.cost-item {
+.item-custo {
     background-color: var(--background);
     border-radius: 4px;
     padding: 10px;
@@ -202,7 +202,7 @@ fieldset:not(:first-of-type) {
     align-items: center;
 }
 
-.cost-item button {
+.item-custo button {
     background-color: #dc3545;
     color: white;
     border: none;
@@ -219,4 +219,23 @@ fieldset:not(:first-of-type) {
     font-size: 1.2rem;
     color: var(--text-light);
     margin-top: 10px;
+}
+
+/* Classes adicionais para manter compatibilidade */
+#container-custos {
+    margin-bottom: 20px;
+}
+
+#resumo-custos {
+    background-color: var(--background-light);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+#previa-valor-hora, 
+#resultado-valor-projeto, 
+#valor-hora-final {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin: 15px 0;
 }

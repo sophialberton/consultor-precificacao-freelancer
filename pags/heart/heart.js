@@ -1,24 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const formulario = document.getElementById('calculator-form');
-    const containerResultado = document.getElementById('result-container');
-    const valorResultado = document.getElementById('result-value');
+    const formulario = document.getElementById('formulario-calculadora');
+    const containerResultado = document.getElementById('container-resultado');
+    const valorResultado = document.getElementById('valor-resultado');
     
     formulario.addEventListener('submit', function(e) {
         e.preventDefault();
         
         // Obter valores do formulário
-        const valorProjeto = parseFloat(document.getElementById('project-value').value);
-        const horasDiarias = parseFloat(document.getElementById('daily-hours').value);
-        const diasTrabalhados = parseFloat(document.getElementById('work-days').value);
-        const diasFerias = parseFloat(document.getElementById('vacation-days').value);
+        const valorProjeto = parseFloat(document.getElementById('valor-projeto').value);
+        const horasDiarias = parseFloat(document.getElementById('horas-diarias').value);
+        const diasTrabalho = parseFloat(document.getElementById('dias-trabalho').value);
+        const diasFerias = parseFloat(document.getElementById('dias-ferias').value);
         
         // Validar entradas
-        if (isNaN(valorProjeto) || isNaN(horasDiarias) || isNaN(diasTrabalhados) || isNaN(diasFerias)) {
+        if (isNaN(valorProjeto) || isNaN(horasDiarias) || isNaN(diasTrabalho) || isNaN(diasFerias)) {
             alert('Por favor, preencha todos os campos com valores numéricos válidos.');
             return;
         }
         
-        if (valorProjeto <= 0 || horasDiarias <= 0 || diasTrabalhados <= 0 || diasFerias < 0) {
+        if (valorProjeto <= 0 || horasDiarias <= 0 || diasTrabalho <= 0 || diasFerias < 0) {
             alert('Por favor, insira valores positivos em todos os campos (exceto dias de férias que pode ser zero).');
             return;
         }
@@ -28,18 +28,18 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        if (diasTrabalhados > 7) {
+        if (diasTrabalho > 7) {
             alert('Não há mais que 7 dias na semana.');
             return;
         }
         
         // Calcular valor da hora
-        const valorHora = calcularValorHora(valorProjeto, horasDiarias, diasTrabalhados, diasFerias);
+        const valorHora = calcularValorHora(valorProjeto, horasDiarias, diasTrabalho, diasFerias);
         
         // Exibir resultado
-        valorResultado.textContent = `R$ ${valorHora.toFixed(2)}`;
+        valorResultado.textContent = `R$ ${valorHora.toFixed(2).replace('.', ',')}`;
         containerResultado.style.display = 'block';
-        containerResultado.classList.remove('hidden');
+        containerResultado.classList.remove('oculto');
         
         // Rolagem suave para o resultado
         containerResultado.scrollIntoView({ behavior: 'smooth' });

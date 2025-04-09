@@ -1,17 +1,3 @@
-
-/*
- * CONTAINER DO LOGO
- * Organiza a imagem do logo e o texto ao lado
- * Usa Flexbox para alinhamento preciso
- */
-.logo-container {
-    display: flex; /* Ativa o modelo Flexbox */
-    align-items: center; /* Centraliza verticalmente */
-    justify-content: center; /* Centraliza horizontalmente */
-    gap: 1rem; /* Espaço de 16px entre logo e texto */
-    margin-bottom: 0.5rem; /* REDUZIDO: Espaço abaixo do container (era 1rem) */
-}
-
 /*
  * HIERARQUIA DE TÍTULOS
  * Define estilos consistentes para headings
@@ -19,21 +5,21 @@
 
 /* Título principal (h1) */
 h1 {
-    font-size: 1.75rem; /* REDUZIDO: Tamanho da fonte (era 2rem) */
-    font-weight: 700; /* Negrito */
+    font-size: 1.75rem;
+    font-weight: 700;
 }
 
 /* Subtítulos (h2) */
 h2 {
-    font-size: 1.5rem; /* 24px */
-    margin-bottom: 1rem; /* Espaço abaixo */
-    color: var(--primary); /* Cor temática */
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
 }
 
 /* Títulos menores (h3) - usado nos cards */
 h3 {
-    font-size: 1.2rem; /* ~19px */
-    margin-bottom: 0.5rem; /* Espaço menor abaixo */
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
 }
 
 /* 
@@ -41,17 +27,15 @@ h3 {
  * Container para as seções de conteúdo
  */
 main {
-    max-width: 1200px; /* Largura máxima para telas grandes */
-    margin: 0 auto; /* Centraliza na página */
-    padding: 0 1rem; /* Prevenção de colapso nas bordas */
-    display: grid; /* Layout em grid */
-    gap: 2rem; /* Espaço entre seções */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: grid;
+    gap: 2rem;
 }
 
-/* [O restante do CSS permanece EXATAMENTE IGUAL...] */
-
 /* Seção de explicação */
-.explanation {
+.explicacao {
     background-color: var(--white);
     padding: 2rem;
     border-radius: 8px;
@@ -59,7 +43,7 @@ main {
 }
 
 /* Grid dos fatores de cálculo */
-.factors {
+.fatores {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
@@ -67,7 +51,7 @@ main {
 }
 
 /* Cards de cada fator */
-.factor {
+.fator {
     background-color: var(--background);
     padding: 1.5rem;
     border-radius: 8px;
@@ -75,7 +59,7 @@ main {
 }
 
 /* Seção da calculadora */
-.calculator {
+.calculadora {
     background-color: var(--white);
     padding: 2rem;
     border-radius: 8px;
@@ -84,7 +68,7 @@ main {
 }
 
 /* Grupos de input */
-.input-group {
+.grupo-input {
     margin-bottom: 1.5rem;
 }
 
@@ -141,7 +125,7 @@ fieldset {
     border-radius: 4px;
     margin-bottom: 1.5rem;
     padding: 0.5em 1em 1em;
-    position: relative; /* Para o legend ficar posicionado corretamente */
+    position: relative;
 }
 
 legend {
@@ -153,7 +137,7 @@ legend {
 }
 
 /* Container do resultado */
-#result-container {
+#container-resultado {
     margin-top: 2rem;
     padding: 1.5rem;
     background-color: var(--background);
@@ -163,12 +147,12 @@ legend {
 }
 
 /* Classe para esconder o resultado */
-#result-container.hidden {
+#container-resultado.oculto {
     display: none;
 }
 
 /* Valor do resultado */
-#result-value {
+#valor-resultado {
     font-size: 2rem;
     font-weight: 700;
     color: var(--primary);
@@ -176,11 +160,10 @@ legend {
 }
 
 /* Texto pequeno */
-.small {
+.pequeno {
     font-size: 0.875rem;
     color: var(--text-light);
 }
-
 
 /* Media queries para responsividade */
 @media (min-width: 768px) {

@@ -21,69 +21,68 @@
     </header>
 
     <main>
-        <section class="explanation">
+        <section class="explicacao">
             <h2>Como calcular o valor da sua hora?</h2>
             <p>Quando trabalhamos com freelances, precisamos considerar vários fatores para determinar um valor justo
                 tanto para você quanto para o cliente.</p>
 
-            <div class="factors">
-                <div class="factor">
+            <div class="fatores">
+                <div class="fator">
                     <h3>⏱️ Tempo diário investido</h3>
                     <p>O tempo que você dedica diariamente ao projeto é valioso e deve ser considerado no cálculo.</p>
                 </div>
-                <div class="factor">
+                <div class="fator">
                     <h3>📅 Dias efetivos trabalhados</h3>
                     <p>Quantos dias por semana você realmente estará disponível para trabalhar no projeto.</p>
                 </div>
-                <div class="factor">
+                <div class="fator">
                     <h3>🏖️ Dias de férias</h3>
                     <p>Todo trabalho merece descanso, e esse tempo deve ser incluído no valor do projeto.</p>
                 </div>
-                <div class="factor">
+                <div class="fator">
                     <h3>💰 Valor total do projeto</h3>
                     <p>O valor bruto que você receberá pelo trabalho completo.</p>
                 </div>
-                <div class="factor">
+                <div class="fator">
                     <h3>🦋 Esse foi o desafio da He4rtLabs</h3>
-                    <p>Ir para minha versão <a href="../pag-calculadora-free/calculadora-free.html">calculadora-free</a>
+                    <p>Ir para minha versão <a href="../calculadora/calculadora.html">calculadora-free</a>
                     </p>
                 </div>
             </div>
         </section>
 
-        <section class="calculator">
+        <section class="calculadora">
             <h2>Calcule o valor da sua hora</h2>
-            <form id="calculator-form">
+            <form id="formulario-calculadora">
 
                 <fieldset>
                     <legend>Valor total do projeto (R$)</legend>
-                    <input type="number" id="project-value" required min="1">
+                    <input type="number" id="valor-projeto" required min="1">
                 </fieldset>
 
                 <fieldset>
                     <legend>Horas trabalhadas por dia</legend>
-                    <input type="number" id="daily-hours" required min="1" max="24">
+                    <input type="number" id="horas-diarias" required min="1" max="24">
                 </fieldset>
 
                 <fieldset>
                     <legend>Dias efetivos por semana</legend>
-                    <input type="number" id="work-days" required min="1" max="7">
+                    <input type="number" id="dias-trabalho" required min="1" max="7">
                 </fieldset>
 
                 <fieldset>
                     <legend>Dias de férias pelo projeto</legend>
-                    <input type="number" id="vacation-days" required min="0">
+                    <input type="number" id="dias-ferias" required min="0">
                 </fieldset>
 
                 <button type="submit">Calcular</button>
             </form>
 
-
-            <div id="result-container" class="hidden">
+            <div id="container-resultado" class="oculto">
                 <h3>Resultado</h3>
                 <p>O valor da sua hora para este projeto é:</p>
-                <div id="result-value">R$ 0,00</div>
-                <p class="small">Considerando os parâmetros informados</p>
+                <div id="valor-resultado">R$ 0,00</div>
+                <p class="pequeno">Considerando os parâmetros informados</p>
             </div>
         </section>
     </main>
@@ -94,5 +93,4 @@
 
     <script src="heart.js"></script>
 </body>
-
 </html>
