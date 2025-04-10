@@ -4,17 +4,25 @@
 <head>
     <!-- Configurações básicas do documento -->
     <meta charset="UTF-8"> <!-- Define a codificação de caracteres como UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura viewport para responsividade -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Configura viewport para responsividade -->
     <title>Calculadora Freelancer</title> <!-- Título da página exibido na aba do navegador -->
-    
+
     <!-- Links para folhas de estilo externas -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Font Awesome para ícones -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Font Awesome para ícones -->
     <link rel="stylesheet" href="calculadora.css"> <!-- Folha de estilo específica da calculadora -->
     <link rel="stylesheet" href="../../assets/global.css"> <!-- Folha de estilo global do projeto -->
+    <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,500i,600,700&display=swap" rel="stylesheet">
+    <!--link rel="stylesheet" href="../../cursor/cursor.css"-->
 </head>
 
 <body>
+    <span class="bubble"> </span>
+    <div class="cursor"></div>
+    <div class="cursor2"></div>
     <!-- Cabeçalho da página -->
     <header>
         <h1>Calculadora de Hora para Freelas</h1> <!-- Título principal -->
@@ -32,7 +40,7 @@
             <!-- <div class="col-11 col-sm-10 col-md-10 col-lg-8 col-xl-6 text-center p-0">-->
             <div class="col-11 col-sm-9 col-md-8 col-lg-6 col-xl-4 text-center p-0">
                 <!-- Card principal que contém todo o formulário -->
-                    <div class="card px-0 pt-4 pb-0">
+                <div class="card px-0 pt-4 pb-0">
                     <!-- Título e descrição da calculadora -->
                     <h2 id="heading">Calculadora de Valor Hora</h2>
                     <p>Preencha todas as etapas para calcular seu valor hora ideal</p>
@@ -41,7 +49,8 @@
                     <form id="formulario-calculadora">
                         <!-- Barra de progresso com etapas -->
                         <ul id="barra-progresso">
-                            <li class="ativo" id="passo1"><strong>Renda</strong></li> <!-- Etapa 1 - ativa inicialmente -->
+                            <li class="ativo" id="passo1"><strong>Renda</strong></li>
+                            <!-- Etapa 1 - ativa inicialmente -->
                             <li id="passo2"><strong>Custos</strong></li> <!-- Etapa 2 -->
                             <li id="passo3"><strong>Projeto</strong></li> <!-- Etapa 3 -->
                             <li id="passo4"><strong>Resultado</strong></li> <!-- Etapa 4 -->
@@ -82,7 +91,8 @@
                                 <!-- Campo para dias trabalhados por semana -->
                                 <div class="form-group">
                                     <label for="dias-trabalho">Dias trabalhados por semana</label>
-                                    <input type="number" id="dias-trabalho" class="form-control" required min="1" max="7"> <!-- Limite de 7 dias -->
+                                    <input type="number" id="dias-trabalho" class="form-control" required min="1"
+                                        max="7"> <!-- Limite de 7 dias -->
                                 </div>
 
                                 <!-- Campo para dias de férias por ano -->
@@ -126,7 +136,8 @@
                                     <!-- Campo para valor do custo -->
                                     <div class="form-group">
                                         <label for="valor-custo">Valor (R$)</label>
-                                        <input type="number" id="valor-custo" class="form-control" step="0.01" min="0"> <!-- Aceita valores decimais -->
+                                        <input type="number" id="valor-custo" class="form-control" step="0.01" min="0">
+                                        <!-- Aceita valores decimais -->
                                     </div>
 
                                     <!-- Seletor para tipo de custo -->
@@ -164,20 +175,22 @@
                                 <!-- Exibição do valor hora calculado -->
                                 <div class="result-box">
                                     <p>Seu valor hora calculado é:</p>
-                                    <div class="result-value" id="previa-valor-hora">R$ 0,00</div> <!-- Valor será atualizado via JS -->
+                                    <div class="result-value" id="previa-valor-hora">R$ 0,00</div>
+                                    <!-- Valor será atualizado via JS -->
                                 </div>
 
                                 <!-- Campo para horas diárias no projeto -->
                                 <div class="form-group">
                                     <label for="horas-diarias-projeto">Horas trabalhadas por dia no projeto</label>
-                                    <input type="number" id="horas-diarias-projeto" class="form-control" min="1" max="24"
-                                        value="8"> <!-- Valor padrão de 8 horas -->
+                                    <input type="number" id="horas-diarias-projeto" class="form-control" min="1"
+                                        max="24" value="8"> <!-- Valor padrão de 8 horas -->
                                 </div>
 
                                 <!-- Campo para dias dedicados ao projeto -->
                                 <div class="form-group">
                                     <label for="dias-projeto">Dias dedicados ao projeto</label>
-                                    <input type="number" id="dias-projeto" class="form-control" min="1"> <!-- Mínimo 1 dia -->
+                                    <input type="number" id="dias-projeto" class="form-control" min="1">
+                                    <!-- Mínimo 1 dia -->
                                 </div>
                             </div>
                             <!-- Botões de navegação entre etapas -->
@@ -201,9 +214,11 @@
                                 <!-- Container de resultados -->
                                 <div class="result-box">
                                     <h3 class="purple-text">Valor do Projeto</h3>
-                                    <div class="result-value" id="resultado-valor-projeto">R$ 0,00</div> <!-- Valor será atualizado via JS -->
+                                    <div class="result-value" id="resultado-valor-projeto">R$ 0,00</div>
+                                    <!-- Valor será atualizado via JS -->
                                     <p>Baseado no seu valor hora:</p>
-                                    <div class="result-value" id="valor-hora-final">R$ 0,00</div> <!-- Valor será atualizado via JS -->
+                                    <div class="result-value" id="valor-hora-final">R$ 0,00</div>
+                                    <!-- Valor será atualizado via JS -->
 
                                     <!-- Seção de resumo de custos -->
                                     <div class="mt-4">
@@ -216,8 +231,7 @@
                             </div>
                             <!-- Botões de navegação -->
                             <input type="button" name="anterior" class="anterior botao-acao-anterior"
-                                value="Anterior" />
-                            <button type="button" class="action-button" id="recalculate">Recalcular</button>
+                            value="Anterior" />
                         </fieldset>
                     </form>
                 </div>
@@ -232,8 +246,10 @@
 
     <!-- Scripts JavaScript -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS -->
     <script src="calculadora.js"></script> <!-- Script específico da calculadora -->
+    <script src="../../cursor/cursor.js"></script>
 </body>
 
 </html>

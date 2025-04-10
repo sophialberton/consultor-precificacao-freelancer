@@ -159,44 +159,6 @@ fieldset:not(:first-of-type) {
     box-shadow: 0 0 0 2px rgba(119, 26, 201, 0.2); /* Sombra de foco */
 }
 
-/* Estilos dos botões de ação */
-.botao-acao {
-    width: 100px; /* Largura fixa */
-    background: var(--primary); /* Cor primária */
-    font-weight: bold; /* Texto em negrito */
-    color: white; /* Texto branco */
-    border: 0 none; /* Remove borda */
-    border-radius: 4px; /* Bordas arredondadas */
-    cursor: pointer; /* Cursor de ponteiro */
-    padding: 10px 5px; /* Espaçamento interno */
-    margin: 10px 0px 10px 5px; /* Margens */
-    float: right; /* Alinha à direita */
-}
-
-/* Efeitos hover e focus */
-.botao-acao:hover, .botao-acao:focus {
-    background-color: var(--primary-dark); /* Cor mais escura */
-}
-
-/* Estilo do botão de voltar */
-.botao-acao-anterior {
-    width: 100px; /* Largura fixa */
-    background: var(--text-light); /* Cor de fundo */
-    font-weight: bold; /* Texto em negrito */
-    color: white; /* Texto branco */
-    border: 0 none; /* Remove borda */
-    border-radius: 4px; /* Bordas arredondadas */
-    cursor: pointer; /* Cursor de ponteiro */
-    padding: 10px 5px; /* Espaçamento interno */
-    margin: 10px 5px 10px 0px; /* Margens */
-    float: right; /* Alinha à direita */
-}
-
-/* Efeitos hover e focus do botão de voltar */
-.botao-acao-anterior:hover, .botao-acao-anterior:focus {
-    background-color: var(--text); /* Cor mais escura */
-}
-
 /* Estilos dos resultados */
 .result-box {
     background-color: var(--background); /* Cor de fundo */
