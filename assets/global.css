@@ -157,3 +157,42 @@ button, .btn, .botao-acao, .botao-acao-anterior {
 button i, .btn i {
     pointer-events: none;
 }
+
+/* EFEITO NAVBAR APLICADO AOS BOTÕES */
+.botao-acao, .botao-acao-anterior {
+    position: relative;
+    overflow: hidden;
+    font-weight: 600;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--primary);
+    border: 0;
+    border-radius: 0px;
+    padding: 0.5rem 1.25rem;
+    transition: all 0.3s ease;
+    width: auto;
+}
+
+/* Sublinhado animado como na navbar */
+.botao-acao::after, .botao-acao-anterior::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+    background-color: #333333;
+    transition: width 0.3s ease;
+}
+
+/* Hover geral */
+.botao-acao:hover, .botao-acao-anterior:hover {
+    background-color: var(--primary);
+    color: var(--white);
+    transform: scale(1.05);
+}
+
+/* Ativa o sublinhado ao passar o mouse */
+.botao-acao:hover::after, .botao-acao-anterior:hover::after {
+    width: 100%;
+}
