@@ -1,4 +1,17 @@
 /*
+ * CONTAINER DO LOGO
+ * Organiza a imagem do logo e o texto ao lado
+ * Usa Flexbox para alinhamento preciso
+ */
+ .logo-container {
+    display: flex; /* Ativa o modelo Flexbox */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 1rem; /* Espaço de 16px entre logo e texto */
+    margin-bottom: 0.5rem; /* REDUZIDO: Espaço abaixo do container (era 1rem) */
+}
+
+/*
  * HIERARQUIA DE TÍTULOS
  * Define estilos consistentes para headings
  */
@@ -36,138 +49,143 @@ main {
 
 /* Seção de explicação */
 .explicacao {
-    background-color: var(--white);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
+    background-color: var(--white); /* Cor de fundo usando variável CSS */
+    padding: 2rem; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: var(--shadow); /* Sombra usando variável CSS */
 }
 
 /* Grid dos fatores de cálculo */
 .fatores {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
+    display: grid; /* Layout em grid */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Colunas responsivas */
+    gap: 1.5rem; /* Espaço entre os itens do grid */
+    margin-top: 2rem; /* Margem superior */
 }
 
 /* Cards de cada fator */
 .fator {
-    background-color: var(--background);
-    padding: 1.5rem;
-    border-radius: 8px;
-    border-left: 4px solid var(--primary);
+    background-color: var(--background); /* Cor de fundo */
+    padding: 1.5rem; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas */
+    border-left: 4px solid var(--primary); /* Borda lateral esquerda colorida */
 }
 
 /* Seção da calculadora */
 .calculadora {
-    background-color: var(--white);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
-    margin-bottom: 2rem;
+    background-color: var(--white); /* Cor de fundo */
+    padding: 2rem; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: var(--shadow); /* Sombra */
+    margin-bottom: 2rem; /* Margem inferior */
 }
 
 /* Grupos de input */
 .grupo-input {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem; /* Espaço entre grupos de inputs */
 }
 
 /* Labels dos inputs */
 label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
+    display: block; /* Faz o label ocupar toda a linha */
+    margin-bottom: 0.5rem; /* Espaço abaixo do label */
+    font-weight: 500; /* Peso da fonte (semi-negrito) */
 }
 
 /* Estilos dos inputs */
 input {
-    padding: 0.5em 1em;
-    border: 0;
-    background-color: transparent;
-    color: var(--text);
-    font-size: 1rem;
-    width: 100%;
+    padding: 0.5em 1em; /* Espaçamento interno */
+    border: 0; /* Remove borda padrão */
+    background-color: transparent; /* Fundo transparente */
+    color: var(--text); /* Cor do texto */
+    font-size: 1rem; /* Tamanho da fonte */
+    width: 100%; /* Largura total */
 }
 
+/* Estilo quando o input está em foco */
 input:focus {
-    outline: 0;
+    outline: 0; /* Remove outline padrão */
 }
 
 /* Estilos do botão */
 button {
-    background-color: var(--primary);
-    color: var(--white);
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 100%;
+    background-color: var(--primary); /* Cor de fundo */
+    color: var(--white); /* Cor do texto */
+    border: none; /* Remove borda */
+    padding: 0.75rem 1.5rem; /* Espaçamento interno */
+    border-radius: 4px; /* Bordas arredondadas */
+    font-size: 1rem; /* Tamanho da fonte */
+    font-weight: 500; /* Peso da fonte */
+    cursor: pointer; /* Cursor pointer ao passar o mouse */
+    transition: background-color 0.3s; /* Transição suave de cor */
+    width: 100%; /* Largura total */
 }
 
 /* Efeito hover do botão */
 button:hover {
-    background-color: var(--primary-dark);
+    background-color: var(--primary-dark); /* Cor de fundo ao passar mouse */
 }
 
+/* Estilo do formulário */
 form {
-    background-color: var(--white);
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
-    margin-bottom: 2rem;
+    background-color: var(--white); /* Cor de fundo */
+    padding: 2rem; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: var(--shadow); /* Sombra */
+    margin-bottom: 2rem; /* Margem inferior */
 }
 
+/* Estilo do fieldset (grupo de campos) */
 fieldset {
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    margin-bottom: 1.5rem;
-    padding: 0.5em 1em 1em;
-    position: relative;
+    border: 1px solid var(--border); /* Borda */
+    border-radius: 4px; /* Bordas arredondadas */
+    margin-bottom: 1.5rem; /* Margem inferior */
+    padding: 0.5em 1em 1em; /* Espaçamento interno */
+    position: relative; /* Para posicionamento do legend */
 }
 
+/* Estilo da legenda do fieldset */
 legend {
-    margin-left: 0.75em;
-    padding-inline: 0.5em;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--text-light);
+    margin-left: 0.75em; /* Margem esquerda */
+    padding-inline: 0.5em; /* Espaçamento horizontal interno */
+    font-size: 1rem; /* Tamanho da fonte */
+    font-weight: 500; /* Peso da fonte */
+    color: var(--text-light); /* Cor do texto */
 }
 
 /* Container do resultado */
-#container-resultado {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background-color: var(--background);
-    border-radius: 8px;
-    text-align: center;
-    display: none;
+#result-container {
+    margin-top: 2rem; /* Margem superior */
+    padding: 1.5rem; /* Espaçamento interno */
+    background-color: var(--background); /* Cor de fundo */
+    border-radius: 8px; /* Bordas arredondadas */
+    text-align: center; /* Alinhamento centralizado */
+    display: none; /* Inicialmente oculto */
 }
 
 /* Classe para esconder o resultado */
-#container-resultado.oculto {
-    display: none;
+#result-container.hidden {
+    display: none; /* Mantém oculto */
 }
 
 /* Valor do resultado */
 #valor-resultado {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin: 1rem 0;
+    font-size: 2rem; /* Tamanho grande da fonte */
+    font-weight: 700; /* Negrito */
+    color: var(--primary); /* Cor temática */
+    margin: 1rem 0; /* Margem vertical */
 }
 
 /* Texto pequeno */
 .pequeno {
-    font-size: 0.875rem;
-    color: var(--text-light);
+    font-size: 0.875rem; /* Tamanho pequeno de fonte */
+    color: var(--text-light); /* Cor de texto clara */
 }
 
 /* Media queries para responsividade */
 @media (min-width: 768px) {
+    /* Layout para telas maiores que 768px */
     main {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr; /* Duas colunas de largura igual */
     }
 }
