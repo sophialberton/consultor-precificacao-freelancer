@@ -18,10 +18,15 @@
     box-sizing: border-box; /* Faz padding e border serem incluídos na largura/altura */
     font-family: 'Inter', sans-serif; /* Define a fonte padrão */
 }
+html, body, *, *::before, *::after {
+    cursor: none !important;
+  }
+  
 
 /* FUNDO ANIMADO */
 body {
     /* Estilos para o elemento body */
+    cursor: none;
     background: linear-gradient(-45deg, #d874d8, #e73c7e, #66c1e2, #d52338); /* Gradiente colorido */
     background-size: 400% 400%; /* Tamanho do gradiente para permitir animação */
     animation: gradient 15s ease infinite; /* Animação do gradiente */
@@ -43,8 +48,8 @@ header {
     backdrop-filter: blur(6px) saturate(176%); /* Efeito de desfoque no fundo */
     -webkit-backdrop-filter: blur(6px) saturate(176%); /* Versão para Safari */
     background-color: rgba(255, 255, 255, 0.08); /* Fundo semi-transparente */
-    border-radius: 12px; /* Bordas arredondadas */
-    border: 1px solid rgba(209, 213, 219, 0.3); /* Borda sutil */
+    border-radius: 0px; /* Bordas arredondadas */
+    border: 0px solid rgba(209, 213, 219, 0.3); /* Borda sutil */
     color: var(--white); /* Cor do texto */
     padding: 1rem; /* Espaçamento interno */
     text-align: center; /* Alinhamento do texto */
@@ -79,8 +84,8 @@ footer {
     color: var(--white); /* Cor do texto */
     background-color: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
     padding: 0.5rem 1.25rem; /* Espaçamento interno */
-    border: 2px solid var(--white); /* Borda branca */
-    border-radius: 8px; /* Bordas arredondadas */
+    border: 0px solid var(--white); /* Borda branca */
+    border-radius: 0px; /* Bordas arredondadas */
     font-weight: 600; /* Peso da fonte (semi-negrito) */
     transition: all 0.3s ease; /* Transição suave para hover */
 }
@@ -92,4 +97,47 @@ footer {
     color: var(--primary); /* Cor do texto muda para primária */
     transform: scale(1.05); /* Efeito de zoom sutil */
     border-color: var(--white); /* Mantém borda branca */
+}
+
+.cursor {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border: 1px solid black;
+    transition: all 200ms ease-out;
+    position: fixed;
+    pointer-events: none;
+    left: 0;
+    top: 0;
+    z-index: 9999; /* Adicionado para ficar na frente de tudo */
+    transform: translate(calc(-50% + 15px), -50%);
+  }
+  
+  .cursor2 {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: black;
+    opacity: .3;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999; /* Também aqui */
+    transform: translate(-50%, -50%);
+    transition: width .3s, height .3s, opacity .3s;
+  }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Ajusta o cursor e impede seleção de texto nos botões */
+button, .btn, .botao-acao, .botao-acao-anterior {
+    cursor: pointer;
+    user-select: none;
+}
+
+button i, .btn i {
+    pointer-events: none;
 }
