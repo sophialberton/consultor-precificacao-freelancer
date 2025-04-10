@@ -88,15 +88,28 @@ footer {
     border-radius: 0px; /* Bordas arredondadas */
     font-weight: 600; /* Peso da fonte (semi-negrito) */
     transition: all 0.3s ease; /* Transição suave para hover */
+    position: relative;
+    overflow: hidden; /* Garante que o sublinhado não ultrapasse o botão */
 }
-
+/* Sub-linhado animado */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    left: 0;
+    bottom: 0; /* Aparece embaixo do botão */
+    background-color: var(--white); /* Ou var(--primary-dark) se quiser roxo */
+    transition: width 0.3s ease;
+}
 /* EFEITO HOVER NOS LINKS */
-.nav-links a:hover {
+.nav-links a:hover::after {
     /* Estilos quando o mouse passa sobre o link */
     background-color: var(--white); /* Fundo branco */
     color: var(--primary); /* Cor do texto muda para primária */
     transform: scale(1.05); /* Efeito de zoom sutil */
     border-color: var(--white); /* Mantém borda branca */
+    width: 100%;
 }
 
 .cursor {
