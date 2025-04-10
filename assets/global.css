@@ -99,16 +99,19 @@ footer {
     height: 2px;
     left: 0;
     bottom: 0; /* Aparece embaixo do botão */
-    background-color: var(--white); /* Ou var(--primary-dark) se quiser roxo */
+    background-color: var(--primary); /* Ou var(--primary-dark) se quiser roxo */
     transition: width 0.3s ease;
 }
 /* EFEITO HOVER NOS LINKS */
-.nav-links a:hover::after {
+.nav-links a:hover {
     /* Estilos quando o mouse passa sobre o link */
     background-color: var(--white); /* Fundo branco */
     color: var(--primary); /* Cor do texto muda para primária */
     transform: scale(1.05); /* Efeito de zoom sutil */
     border-color: var(--white); /* Mantém borda branca */
+}
+
+.nav-links a:hover::after {
     width: 100%;
 }
 
