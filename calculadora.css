@@ -1,0 +1,377 @@
+/* CARD PRINCIPAL */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    background-color: var(--white);
+    padding: 20px 40px !important;
+}
+
+#heading {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    color: var(--text-light);
+}
+
+/* ... (ESTILOS ANTERIORES DO CARD, BARRA DE PROGRESSO, FORMULÁRIO) ... */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    background-color: var(--white);
+    padding: 20px 40px !important;
+}
+
+#barra-progresso li {
+    width: 33.33%;
+}
+
+
+/* BARRA DE PROGRESSO */
+#barra-progresso {
+    margin-bottom: 30px;
+    overflow: hidden;
+    padding-left: 0;
+    display: flex;
+    justify-content: center;
+}
+
+#barra-progresso li {
+    list-style-type: none;
+    font-size: 14px;
+    width: 33.33%;
+    position: relative;
+    font-weight: 500;
+    color: var(--text-light);
+    text-align: center;
+}
+
+#barra-progresso li.ativo {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+#barra-progresso li:before {
+    content: ""; 
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    font-size: 16px;
+    color: var(--white);
+    background: #e0e0e0;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    border: 2px solid #e0e0e0;
+}
+
+#barra-progresso li.ativo:before {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+#barra-progresso li:after {
+    content: '';
+    width: 100%;
+    height: 3px;
+    background: #e0e0e0;
+    position: absolute;
+    left: -50%;
+    top: 14px;
+    z-index: -1;
+}
+
+#barra-progresso li:first-child:after {
+    content: none;
+}
+
+#barra-progresso li.ativo:after {
+    background: var(--primary);
+}
+
+.progress-bar {
+    background-color: var(--primary);
+    transition: width 0.4s ease-in-out;
+}
+
+/* FIELDSETS */
+fieldset {
+    background: var(--white);
+    border: 0 none;
+    border-radius: 0.5rem;
+    width: 100%;
+    margin: 0;
+    padding: 20px 10px;
+    display: none;
+}
+
+fieldset:first-of-type {
+    display: block;
+}
+
+.fs-title {
+    font-size: 22px;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.steps {
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+/* FORMULÁRIO E SEÇÕES */
+.section-title {
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #555;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 0.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.form-group label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.form-control {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control:focus {
+    outline: 0;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.15);
+}
+
+.form-control.is-invalid {
+    border-color: var(--danger);
+}
+
+.error-message {
+    color: var(--danger);
+    font-size: 0.875rem;
+    display: block;
+    margin-top: 0.25rem;
+}
+
+/* RESULTADOS E PRÉVIAS */
+.result-box-preview {
+    background-color: #f8f9fa;
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.result-box-preview .result-value {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 5px 0;
+}
+
+.resultado-final-container {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.card-resultado {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.card-resultado .card-header {
+    background-color: #f8f9fa;
+    padding: 0.75rem;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.card-resultado .card-body {
+    padding: 1.5rem;
+}
+
+.card-resultado .valor-principal {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--success);
+    margin: 0;
+}
+
+.card-resultado .valor-secundario {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0;
+}
+
+.card-resultado .descricao {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-top: 0.5rem;
+}
+
+.card-resultado.recomendado {
+    border: 2px solid var(--success);
+    box-shadow: 0 4px 15px rgba(92, 184, 92, 0.2);
+}
+
+.card-resultado.recomendado .card-header {
+    background-color: var(--success);
+    color: var(--white);
+}
+
+* --- NOVOS ESTILOS PARA A CARTILHA --- */
+.cartilha-impressao {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    text-align: left;
+    background-color: #fdfdfd;
+}
+
+.cartilha-header {
+    text-align: center;
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.cartilha-header h3 {
+    color: var(--primary);
+    font-weight: 600;
+    margin: 0;
+}
+
+.cartilha-header p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.cartilha-section {
+    margin-bottom: 1.5rem;
+}
+
+.cartilha-section h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 1rem;
+}
+
+.cartilha-section p {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    margin: 0;
+}
+
+.cartilha-section p:last-child {
+    border-bottom: none;
+}
+
+.cartilha-section p.total {
+    border-top: 2px solid #ddd;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+.cartilha-section p span {
+    color: var(--text-light);
+}
+
+.cartilha-section p strong {
+    color: var(--text);
+}
+
+.cartilha-section.final-values {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.valor-item {
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.valor-item p {
+    margin: 0 0 0.25rem 0;
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: block;
+    border: none;
+}
+
+.valor-item strong {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.valor-item.minimo { background-color: #fff8e1; color: #f57c00; border: 1px solid #fdd835;}
+.valor-item.mercado { background-color: #e8f5e9; color: #388e3c; border: 1px solid #a5d6a7;}
+.valor-item.premium { background-color: #e3f2fd; color: #1976d2; border: 1px solid #90caf9;}
+
+
+/* --- ESTILOS DE IMPRESSÃO --- */
+@media print {
+    body, html {
+        background: #fff !important;
+        font-size: 11pt;
+    }
+    
+    header, footer, .nav-links, #barra-progresso, .progress, .steps, .botao-acao, .botao-acao-anterior, #btn-imprimir, .fs-title {
+        display: none !important;
+    }
+
+    .card {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+
+    .container-fluid, .row, .col {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    #cartilha-container {
+        display: block;
+        width: 100%;
+    }
+
+    .cartilha-impressao {
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .valor-item strong {
+        font-size: 1.5rem;
+    }
+}

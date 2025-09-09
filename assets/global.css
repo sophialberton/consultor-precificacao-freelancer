@@ -1,198 +1,212 @@
-/* VARIÁVEIS GLOBAIS */
+/* VARIÁVEIS GLOBAIS DE ESTILO */
 :root {
-    /* Define variáveis CSS reutilizáveis em todo o projeto */
-    --primary: #89a2e7; /* Cor primária (azul claro) */
-    --primary-dark: #a059e2; /* Versão mais escura da cor primária (roxo) */
-    --text: #333333; /* Cor padrão para textos (cinza escuro) */
-    --text-light: #666666; /* Cor para textos secundários (cinza médio) */
-    --white: #FFFFFF; /* Cor branca */
-    --border: #E1E1E1; /* Cor para bordas (cinza claro) */
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra padrão para elementos */
+    --primary: #4A90E2; /* Azul mais corporativo */
+    --primary-dark: #357ABD; /* Azul escuro para hover */
+    --success: #5CB85C; /* Verde para sucesso */
+    --danger: #D9534F; /* Vermelho para erros */
+    --text: #333333;
+    --text-light: #666666;
+    --white: #FFFFFF;
+    --background: #f8f9fa;
+    --border: #DEE2E6;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* RESET E FONTE */
+/* RESET E PADRÕES GLOBAIS */
 * {
-    /* Reset básico para todos os elementos */
-    margin: 0; /* Remove margens padrão */
-    padding: 0; /* Remove paddings padrão */
-    box-sizing: border-box; /* Faz padding e border serem incluídos na largura/altura */
-    font-family: 'Inter', sans-serif; /* Define a fonte padrão */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cabin', sans-serif;
 }
-html, body, *, *::before, *::after {
-    cursor: none !important;
-  }
-  
 
-/* FUNDO ANIMADO */
 body {
-    /* Estilos para o elemento body */
-    cursor: none;
-    background: linear-gradient(-45deg, #d874d8, #e73c7e, #66c1e2, #d52338); /* Gradiente colorido */
-    background-size: 400% 400%; /* Tamanho do gradiente para permitir animação */
-    animation: gradient 15s ease infinite; /* Animação do gradiente */
-    height: 100vh; /* Altura total da viewport */
-    color: var(--text); /* Cor do texto usando variável */
-    line-height: 1.6; /* Espaçamento entre linhas */
+    background-color: var(--background); /* Fundo estático e limpo */
+    color: var(--text);
+    line-height: 1.6;
 }
 
-/* Animação do gradiente de fundo */
+/*
+body {
+    background: linear-gradient(-45deg, #d874d8, #e73c7e, #66c1e2, #d52338);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    height: 100vh;
+}
+
 @keyframes gradient {
-    0% { background-position: 0% 50%; } /* Posição inicial do gradiente */
-    50% { background-position: 100% 50%; } /* Posição intermediária */
-    100% { background-position: 0% 50%; } /* Retorna à posição inicial */
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
+*/
 
-/* HEADER PADRÃO */
+/* HEADER */
 header {
-    /* Estilos para o cabeçalho */
-    backdrop-filter: blur(6px) saturate(176%); /* Efeito de desfoque no fundo */
-    -webkit-backdrop-filter: blur(6px) saturate(176%); /* Versão para Safari */
-    background-color: rgba(255, 255, 255, 0.08); /* Fundo semi-transparente */
-    border-radius: 0px; /* Bordas arredondadas */
-    border: 0px solid rgba(209, 213, 219, 0.3); /* Borda sutil */
-    color: var(--white); /* Cor do texto */
-    padding: 1rem; /* Espaçamento interno */
-    text-align: center; /* Alinhamento do texto */
-    margin-bottom: 1.5rem; /* Margem inferior */
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* FOOTER PADRÃO */
-footer {
-    /* Estilos para o rodapé */
-    text-align: center; /* Alinhamento do texto */
-    padding: 1.5rem; /* Espaçamento interno */
-    color: var(--text-light); /* Cor do texto mais clara */
-    font-size: 0.875rem; /* Tamanho menor da fonte */
-    margin-top: 2rem; /* Margem superior */
-    border-top: 1px solid var(--border); /* Borda superior */
+header h1 {
+    margin: 0;
+    font-weight: 600;
 }
 
 /* LINKS DE NAVEGAÇÃO */
 .nav-links {
-    /* Container dos links de navegação */
-    margin-top: 1rem; /* Margem superior */
-    display: flex; /* Layout flexível */
-    justify-content: center; /* Centraliza horizontalmente */
-    gap: 1rem; /* Espaço entre os itens */
-    flex-wrap: wrap; /* Permite quebra de linha */
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
 }
 
-/* ESTILOS DOS LINKS */
 .nav-links a {
-    /* Estilos base para os links */
-    text-decoration: none; /* Remove sublinhado */
-    color: var(--white); /* Cor do texto */
-    background-color: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
-    padding: 0.5rem 1.25rem; /* Espaçamento interno */
-    border: 0px solid var(--white); /* Borda branca */
-    border-radius: 0px; /* Bordas arredondadas */
-    font-weight: 600; /* Peso da fonte (semi-negrito) */
-    transition: all 0.3s ease; /* Transição suave para hover */
-    position: relative;
-    overflow: hidden; /* Garante que o sublinhado não ultrapasse o botão */
-}
-/* Sub-linhado animado */
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    left: 0;
-    bottom: 0; /* Aparece embaixo do botão */
-    background-color: var(--primary); /* Ou var(--primary-dark) se quiser roxo */
-    transition: width 0.3s ease;
-}
-/* EFEITO HOVER NOS LINKS */
-.nav-links a:hover {
-    /* Estilos quando o mouse passa sobre o link */
-    background-color: var(--white); /* Fundo branco */
-    color: var(--primary); /* Cor do texto muda para primária */
-    transform: scale(1.05); /* Efeito de zoom sutil */
-    border-color: var(--white); /* Mantém borda branca */
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-.cursor {
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    border: 1px solid black;
-    transition: all 200ms ease-out;
-    position: fixed;
-    pointer-events: none;
-    left: 0;
-    top: 0;
-    z-index: 9999; /* Adicionado para ficar na frente de tudo */
-    transform: translate(calc(-50% + 15px), -50%);
-  }
-  
-  .cursor2 {
-    width: 20px;
-    height: 20px;
-    border-radius: 100%;
-    background-color: black;
-    opacity: .3;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999; /* Também aqui */
-    transform: translate(-50%, -50%);
-    transition: width .3s, height .3s, opacity .3s;
-  }
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-}
-
-/* Ajusta o cursor e impede seleção de texto nos botões */
-button, .btn, .botao-acao, .botao-acao-anterior {
-    cursor: pointer;
-    user-select: none;
-}
-
-button i, .btn i {
-    pointer-events: none;
-}
-
-/* EFEITO NAVBAR APLICADO AOS BOTÕES */
-.botao-acao, .botao-acao-anterior {
-    position: relative;
-    overflow: hidden;
-    font-weight: 600;
     text-decoration: none;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--primary);
-    border: 0;
-    border-radius: 0px;
+    color: var(--white);
     padding: 0.5rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    font-weight: 500;
     transition: all 0.3s ease;
-    width: auto;
 }
 
-/* Sublinhado animado como na navbar */
-.botao-acao::after, .botao-acao-anterior::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    left: 0;
-    bottom: 0;
-    background-color: #333333;
-    transition: width 0.3s ease;
+.nav-links a:hover {
+    background-color: var(--white);
+    color: var(--primary);
+    transform: translateY(-2px);
 }
 
-/* Hover geral */
-.botao-acao:hover, .botao-acao-anterior:hover {
+/* BOTÕES GLOBAIS */
+.botao-acao, .botao-acao-anterior {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 5px;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.botao-acao {
     background-color: var(--primary);
     color: var(--white);
-    transform: scale(1.05);
 }
 
-/* Ativa o sublinhado ao passar o mouse */
-.botao-acao:hover::after, .botao-acao-anterior:hover::after {
-    width: 100%;
+.botao-acao:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.botao-acao-anterior {
+    background-color: #f0f0f0;
+    color: var(--text-light);
+}
+
+.botao-acao-anterior:hover {
+    background-color: #e0e0e0;
+}
+
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
+/*
+.cursor, .cursor2 { display: none; }
+*/
+
+/* ========================================= */
+/* ESTILOS PARA O RODAPÉ (FOOTER)            */
+/* ========================================= */
+
+footer {
+    text-align: center;
+    padding: 2rem 1rem; /* Padding vertical e horizontal */
+    margin-top: 2rem;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--secondary);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que os itens quebrem a linha em telas menores */
+    gap: 1.5rem; /* Espaçamento entre os elementos */
+    margin-bottom: 2rem;
+}
+
+.footer-logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text);
+}
+
+.footer-nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-nav a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+    color: var(--primary);
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-social a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--background);
+    border: 1px solid var(--secondary);
+    border-radius: 50%; /* Deixa o link circular */
+    color: var(--accent);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social a:hover {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--card-bg); /* Cor do ícone no hover */
+    transform: translateY(-3px);
+}
+
+.footer-copyright {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--secondary);
+    font-size: 0.9rem;
+    color: var(--secondary);
+}
+
+/* Responsividade para o rodapé */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; /* Empilha os itens verticalmente */
+        justify-content: center;
+        text-align: center;
+    }
 }
