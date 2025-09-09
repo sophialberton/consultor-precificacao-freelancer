@@ -342,11 +342,16 @@ fieldset:first-of-type {
 @media print {
     body, html {
         background: #fff !important;
-        font-size: 11pt;
+        font-size: 12pt;
+        width: 100%;
     }
     
-    header, footer, .nav-links, #barra-progresso, .progress, .steps, .botao-acao, .botao-acao-anterior, #btn-imprimir, .fs-title {
+    /* Esconde TUDO que não precisa aparecer */
+    header, footer, #barra-progresso, .progress, .botao-acao, .botao-acao-anterior, 
+    #btn-imprimir, .fs-title, .steps, h2#heading, #heading + p, 
+    #valor-hora-sugestoes, .cartilha-section h4 {
         display: none !important;
+        visibility: hidden;
     }
 
     .card {
@@ -354,24 +359,20 @@ fieldset:first-of-type {
         border: none !important;
         padding: 0 !important;
     }
-
-    .container-fluid, .row, .col {
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    #cartilha-container {
-        display: block;
+    
+    /* Força o container do relatório a ser o único elemento visível */
+    #cartilha-detalhada {
+        display: block !important;
+        visibility: visible;
         width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border: none;
     }
 
-    .cartilha-impressao {
-        border: 1px solid #ccc;
-        padding: 20px;
-        border-radius: 8px;
-    }
-
-    .valor-item strong {
-        font-size: 1.5rem;
+    .fieldset-content > * {
+        display: none;
+        visibility: hidden;
     }
 }

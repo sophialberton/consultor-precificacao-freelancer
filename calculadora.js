@@ -139,10 +139,22 @@ const Consultor = {
     // Etapa 3 (Início): Mostra as opções de valor/hora para o usuário
     apresentarSugestoes: function() {
         const d = this.dadosCalculo;
+        const nivel = $('#nivel-experiencia').val();
+
+        // Valores de mercado baseados em pesquisa para o mercado BR de tecnologia/design.
+        const VALORES_MERCADO_BR = {
+            iniciante:    { baixo: 45, medio: 60, alto: 80 },
+            intermediario: { baixo: 70, medio: 90, alto: 120 },
+            avancado:     { baixo: 100, medio: 150, alto: 200 }
+        };
+
+        const mercado = VALORES_MERCADO_BR[nivel];
+
         const sugestoes = [
-            { id: 'minimo', label: 'Mínimo (Equilíbrio)', valor: d.valorMinimo },
-            { id: 'mercado', label: 'Mercado (Recomendado)', valor: d.valorMercado },
-            { id: 'premium', label: 'Premium (Alto Impacto)', valor: d.valorPremium }
+            { id: 'calculo', label: 'Resultado do seu Cálculo (Equilíbrio)', valor: d.valorMinimo },
+            { id: 'mercado-baixo', label: 'Valor/Hora Baixo da média no mercado', valor: mercado.baixo },
+            { id: 'mercado-media', label: 'Valor/Hora na Média do mercado', valor: mercado.medio },
+            { id: 'mercado-alto', label: 'Valor/Hora Alto da média no mercado', valor: mercado.alto }
         ];
 
         let html = '';
