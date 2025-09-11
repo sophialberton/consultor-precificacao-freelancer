@@ -5,8 +5,6 @@
     box-shadow: var(--shadow);
     background-color: var(--white);
     padding: 20px 40px !important;
-    /* Define uma altura mínima para o card */
-    min-height: 650px; 
 }
 
 #heading {
@@ -181,9 +179,8 @@ fieldset:first-of-type {
     padding: 20px;
     margin-top: 2rem;
     text-align: center;
-    /* Adiciona uma margem inferior para afastar os botões */
-    margin-bottom: 2rem; 
 }
+
 .result-box-preview .result-value {
     font-size: 2.2rem;
     font-weight: 700;
@@ -191,72 +188,18 @@ fieldset:first-of-type {
     margin: 5px 0;
 }
 
-.resultado-final-container {
-    display: grid;
-    gap: 1.5rem;
-    margin-top: 1rem;
-}
-
-.card-resultado {
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    text-align: center;
-    overflow: hidden;
-}
-
-.card-resultado .card-header {
-    background-color: #f8f9fa;
-    padding: 0.75rem;
-    font-weight: 600;
-    font-size: 1rem;
-}
-
-.card-resultado .card-body {
-    padding: 1.5rem;
-}
-
-.card-resultado .valor-principal {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--success);
-    margin: 0;
-}
-
-.card-resultado .valor-secundario {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: var(--text);
-    margin: 0;
-}
-
-.card-resultado .descricao {
-    font-size: 0.9rem;
-    color: var(--text-light);
-    margin-top: 0.5rem;
-}
-
-.card-resultado.recomendado {
-    border: 2px solid var(--success);
-    box-shadow: 0 4px 15px rgba(92, 184, 92, 0.2);
-}
-
-.card-resultado.recomendado .card-header {
-    background-color: var(--success);
-    color: var(--white);
-}
-
-* --- NOVOS ESTILOS PARA A CARTILHA --- */
+/* --- NOVOS ESTILOS PARA A CARTILHA --- */
 .cartilha-impressao {
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 1.5rem 2rem;
+    padding: 1.5rem;
     text-align: left;
-    background-color: #fdfdfd;
+    background-color: var(--background);
 }
 
 .cartilha-header {
     text-align: center;
-    border-bottom: 2px solid var(--primary);
+    border-bottom: 2px solid var(--border);
     padding-bottom: 1rem;
     margin-bottom: 1.5rem;
 }
@@ -277,68 +220,108 @@ fieldset:first-of-type {
     margin-bottom: 1.5rem;
 }
 
-.cartilha-section h4 {
-    font-size: 1.1rem;
+/* NOVO: Seletor de tipo de relatório */
+.relatorio-tipo-selector {
+    display: flex;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+.relatorio-tipo-selector input[type="radio"] {
+    display: none;
+}
+.relatorio-tipo-selector label {
+    flex: 1;
+    text-align: center;
+    padding: 0.75rem;
+    cursor: pointer;
+    background-color: var(--white);
+    color: var(--text-light);
+    transition: all 0.2s ease-in-out;
+    margin: 0;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+.relatorio-tipo-selector input[type="radio"]:checked + label {
+    background-color: var(--primary);
+    color: var(--primary-text);
     font-weight: 600;
-    color: #444;
-    margin-bottom: 1rem;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.cartilha-section p {
+
+/* NOVO: Grid para os blocos do relatório */
+.cartilha-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+/* Em telas maiores, os blocos ficam lado a lado */
+@media (min-width: 768px) {
+    .cartilha-content.view-ambos {
+       /* Duas colunas de tamanho igual */
+       grid-template-columns: 1fr 1fr;
+    }
+    /* Faz o bloco de jornada ocupar a largura total */
+    .cartilha-content.view-ambos #bloco-jornada {
+        grid-column: 1 / -1;
+    }
+}
+
+/* NOVO: Estilo para cada bloco do relatório */
+.relatorio-bloco {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    background-color: var(--white);
+    display: none; /* Escondido por padrão, controlado via JS */
+}
+
+.relatorio-bloco h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+}
+
+.relatorio-bloco p {
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 0;
     border-bottom: 1px solid #f0f0f0;
     margin: 0;
+    font-size: 0.95rem;
 }
 
-.cartilha-section p:last-child {
+.relatorio-bloco p:last-child {
     border-bottom: none;
 }
 
-.cartilha-section p.total {
+.relatorio-bloco p.total {
     border-top: 2px solid #ddd;
     font-size: 1.1rem;
     margin-top: 0.5rem;
+    font-weight: 600;
 }
 
-.cartilha-section p span {
+.relatorio-bloco p span {
     color: var(--text-light);
 }
 
-.cartilha-section p strong {
+.relatorio-bloco p strong {
     color: var(--text);
 }
-
-.cartilha-section.final-values {
-    margin-top: 2rem;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-}
-
-.valor-item {
-    border-radius: 8px;
-    padding: 1rem;
-    text-align: center;
-}
-
-.valor-item p {
-    margin: 0 0 0.25rem 0;
-    font-weight: 500;
-    font-size: 0.9rem;
-    display: block;
-    border: none;
-}
-
-.valor-item strong {
-    font-size: 1.8rem;
-    font-weight: 700;
-}
-
-.valor-item.minimo { background-color: #fff8e1; color: #f57c00; border: 1px solid #fdd835;}
-.valor-item.mercado { background-color: #e8f5e9; color: #388e3c; border: 1px solid #a5d6a7;}
-.valor-item.premium { background-color: #e3f2fd; color: #1976d2; border: 1px solid #90caf9;}
 
 
 /* --- ESTILOS DE IMPRESSÃO --- */
@@ -349,12 +332,10 @@ fieldset:first-of-type {
         width: 100%;
     }
     
-    /* Esconde TUDO que não precisa aparecer */
     header, footer, #barra-progresso, .progress, .botao-acao, .botao-acao-anterior, 
     #btn-imprimir, .fs-title, .steps, h2#heading, #heading + p, 
-    #valor-hora-sugestoes, .cartilha-section h4 {
+    #valor-hora-sugestoes, .cartilha-section, .relatorio-tipo-selector {
         display: none !important;
-        visibility: hidden;
     }
 
     .card {
@@ -363,33 +344,31 @@ fieldset:first-of-type {
         padding: 0 !important;
     }
     
-    /* Força o container do relatório a ser o único elemento visível */
     #cartilha-detalhada {
         display: block !important;
-        visibility: visible;
-        width: 100%;
         position: absolute;
         top: 0;
         left: 0;
         border: none;
+        width: 100%;
+    }
+    
+    /* Garante que os blocos sejam exibidos na impressão */
+    .relatorio-bloco {
+        display: block !important;
+        break-inside: avoid; /* Evita que o card quebre entre páginas */
     }
 
-    .fieldset-content > * {
-        display: none;
-        visibility: hidden;
+    .cartilha-content {
+        grid-template-columns: 1fr !important; /* Força uma coluna única na impressão */
     }
+}
 
 .action-buttons {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* Aumenta o espaço acima dos botões */
-    margin-top: 2rem; 
+    margin-top: 2.5rem;
     padding-top: 1.5rem;
     border-top: 1px solid var(--border);
-}
-}
-
-#btn-imprimir {
-    margin-bottom: 1rem; /* Adiciona um espaço abaixo do botão de imprimir */
 }

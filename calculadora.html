@@ -145,39 +145,54 @@
                                         </div>
                                 </div>
                                 
+                                <div class="cartilha-section">
+                                    <h4>2. Escolha o formato do Relatório</h4>
+                                    <div class="relatorio-tipo-selector">
+                                        <input type="radio" id="tipo-ambos" name="relatorio-tipo" value="ambos" checked>
+                                        <label for="tipo-ambos"><i class="fas fa-columns"></i> Ambos</label>
+                        
+                                        <input type="radio" id="tipo-mensal" name="relatorio-tipo" value="mensal">
+                                        <label for="tipo-mensal"><i class="far fa-calendar-alt"></i> Visão Mensal</label>
+                        
+                                        <input type="radio" id="tipo-hora" name="relatorio-tipo" value="hora">
+                                        <label for="tipo-hora"><i class="far fa-clock"></i> Visão por Hora</label>
+                                    </div>
+                                </div>
+
                                 <div id="cartilha-detalhada" class="cartilha-impressao" style="display: none;">
                                     <div class="cartilha-header">
                                         <h3>Diagnóstico Financeiro</h3>
                                         <p>Baseado em um valor/hora de <strong id="cartilha-valor-hora-escolhido">R$ 0,00</strong></p>
                                     </div>
                                     
-                                    <div class="cartilha-section">
-                                        <h4>Visão Mensal (se trabalhar o mês inteiro)</h4>
-                                        <p class="entrada"><span>(+) Faturamento Bruto:</span> <strong id="cartilha-bruto-mensal">R$ 0,00</strong></p>
-                                        <p class="saida"><span>(-) Custos Fixos:</span> <strong id="cartilha-custos-fixos">R$ 0,00</strong></p>
-                                        <p class="saida"><span>(-) Benefícios:</span> <strong id="cartilha-beneficios">R$ 0,00</strong></p>
-                                        <p class="saida"><span>(-) Provisão (13º e Férias):</span> <strong id="cartilha-provisao">R$ 0,00</strong></p>
-                                        <p class="saida"><span>(-) Impostos (<span id="cartilha-imposto-percent">0</span>%):</span> <strong id="cartilha-impostos-valor">R$ 0,00</strong></p>
-                                        <p class="total liquido"><span>(=) Salário Líquido:</span> <strong id="cartilha-liquido-mensal">R$ 0,00</strong></p>
-                                    </div>
-                                    
-                                    <div class="cartilha-section">
-                                        <h4>Visão por Hora Trabalhada</h4>
-                                        <p><span>Valor Bruto (cobrado do cliente):</span> <strong id="cartilha-bruto-hora">R$ 0,00</strong></p>
-                                        <p><span>- Custos:</span> <strong id="cartilha-custos-hora">R$ 0,00</strong></p>
-                                        <p><span>- Benefícios:</span> <strong id="cartilha-beneficios-hora">R$ 0,00</strong></p>
-                                        <p><span>- Provisão:</span> <strong id="cartilha-provisao-hora">R$ 0,00</strong></p>
-                                        <p><span>- Impostos:</span> <strong id="cartilha-impostos-hora">R$ 0,00</strong></p>
-                                        <p class="total"><span>(=) Valor Líquido (seu lucro):</span> <strong id="cartilha-liquido-hora">R$ 0,00</strong></p>
-                                        <hr>
-                                        <p><span>Valor da Hora Extra (50%):</span> <strong id="cartilha-extra-hora">R$ 0,00</strong></p>
-                                    </div>
+                                    <div class="cartilha-content">
+                                        <div class="relatorio-bloco" id="bloco-mensal">
+                                            <h4><i class="far fa-calendar-alt me-2"></i>Visão Mensal</h4>
+                                            <p class="entrada"><span>(+) Faturamento Bruto:</span> <strong id="cartilha-bruto-mensal">R$ 0,00</strong></p>
+                                            <p class="saida"><span>(-) Custos Fixos:</span> <strong id="cartilha-custos-fixos">R$ 0,00</strong></p>
+                                            <p class="saida"><span>(-) Benefícios:</span> <strong id="cartilha-beneficios">R$ 0,00</strong></p>
+                                            <p class="saida"><span>(-) Provisão (13º e Férias):</span> <strong id="cartilha-provisao">R$ 0,00</strong></p>
+                                            <p class="saida"><span>(-) Impostos (<span id="cartilha-imposto-percent">0</span>%):</span> <strong id="cartilha-impostos-valor">R$ 0,00</strong></p>
+                                            <p class="total liquido"><span>(=) Salário Líquido:</span> <strong id="cartilha-liquido-mensal">R$ 0,00</strong></p>
+                                        </div>
+                                        
+                                        <div class="relatorio-bloco" id="bloco-hora">
+                                            <h4><i class="far fa-clock me-2"></i>Visão por Hora</h4>
+                                            <p><span>Valor Bruto (cobrado do cliente):</span> <strong id="cartilha-bruto-hora">R$ 0,00</strong></p>
+                                            <p><span>- Custos:</span> <strong id="cartilha-custos-hora">R$ 0,00</strong></p>
+                                            <p><span>- Benefícios:</span> <strong id="cartilha-beneficios-hora">R$ 0,00</strong></p>
+                                            <p><span>- Provisão:</span> <strong id="cartilha-provisao-hora">R$ 0,00</strong></p>
+                                            <p><span>- Impostos:</span> <strong id="cartilha-impostos-hora">R$ 0,00</strong></p>
+                                            <p class="total"><span>(=) Valor Líquido (seu lucro):</span> <strong id="cartilha-liquido-hora">R$ 0,00</strong></p>
+                                            <hr>
+                                            <p><span>Valor da Hora Extra (50%):</span> <strong id="cartilha-extra-hora">R$ 0,00</strong></p>
+                                        </div>
 
-
-                                    <div class="cartilha-section">
-                                        <h4>Jornada de Referência</h4>
-                                        <p><span>Jornada:</span> <span id="cartilha-jornada-texto">--</span></p>
-                                        <p><span>Horas Produtivas / Dia Útil:</span> <strong id="cartilha-horas-dia">0h</strong></p>
+                                        <div class="relatorio-bloco" id="bloco-jornada">
+                                            <h4><i class="fas fa-briefcase me-2"></i>Jornada de Referência</h4>
+                                            <p><span>Jornada:</span> <strong id="cartilha-jornada-texto">--</strong></p>
+                                            <p><span>Horas Produtivas / Dia Útil:</span> <strong id="cartilha-horas-dia">0h</strong></p>
+                                        </div>
                                     </div>
                                 </div>
 

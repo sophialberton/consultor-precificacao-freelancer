@@ -1,7 +1,7 @@
 /**
  * @file Script para a Calculadora de Precificação Freelancer
  * @author Sophia Picasky Alberton (Refatorado por Gemini)
- * @version 2.1.0
+ * @version 2.2.0
  */
 
 // Encapsula toda a lógica da aplicação em um objeto para evitar poluir o escopo global.
@@ -21,6 +21,8 @@ const CalculadoraFreela = {
         NIVEL_EXPERIENCIA: "#nivel-experiencia",
         PREVIA_VALOR_CUSTO: "#previa-valor-hora-custo",
         PREVIA_BOX: ".result-box-preview",
+        // NOVO SELETOR
+        RELATORIO_TIPO_CHOOSER: "input[name='relatorio-tipo']",
     },
 
     MARGENS_EXPERIENCIA: {
@@ -29,7 +31,6 @@ const CalculadoraFreela = {
         avancado: 1.60,      // Custo + 60%
     },
     
-    // Valores baseados na média BR para Devs (CLT: R$3.7k a R$5.4k) e ajustados para freelance
     VALORES_MERCADO_BR: {
         iniciante:    { baixo: 35, medio: 50, alto: 70 },
         intermediario: { baixo: 60, medio: 80, alto: 110 },
@@ -56,13 +57,16 @@ const CalculadoraFreela = {
     },
 
     bindEvents() {
-        const { FORM, PROXIMO_BTN, ANTERIOR_BTN, BTN_IMPRIMIR, SUGESTOES_CONTAINER, NIVEL_EXPERIENCIA } = this.SELECTORS;
+        const { FORM, PROXIMO_BTN, ANTERIOR_BTN, BTN_IMPRIMIR, SUGESTOES_CONTAINER, NIVEL_EXPERIENCIA, RELATORIO_TIPO_CHOOSER } = this.SELECTORS;
         
         $(FORM)
             .on("click", PROXIMO_BTN, () => this.navegarParaPasso(this.passoAtual + 1))
             .on("click", ANTERIOR_BTN, () => this.navegarParaPasso(this.passoAtual - 1))
             .on("change", NIVEL_EXPERIENCIA, this.handleExperienciaChange.bind(this))
-            .on("change", `${SUGESTOES_CONTAINER} input[name="valor-hora-escolha"]`, this.handleValorEscolhido.bind(this));
+            .on("change", `${SUGESTOES_CONTAINER} input[name="valor-hora-escolha"]`, this.handleValorEscolhido.bind(this))
+            // NOVO EVENTO
+            .on("change", RELATORIO_TIPO_CHOOSER, this.handleTipoRelatorioChange.bind(this));
+
 
         $(BTN_IMPRIMIR).on("click", () => window.print());
     },
@@ -200,6 +204,34 @@ const CalculadoraFreela = {
         this.gerarRelatorioDetalhado(valorHoraEscolhido);
     },
 
+    // NOVA FUNÇÃO para controlar a exibição dos blocos
+    handleTipoRelatorioChange() {
+        const tipoEscolhido = $(this.SELECTORS.RELATORIO_TIPO_CHOOSER + ":checked").val();
+        const $content = $('.cartilha-content');
+        const $mensal = $('#bloco-mensal');
+        const $hora = $('#bloco-hora');
+        const $jornada = $('#bloco-jornada');
+
+        // Reseta o estado
+        $content.removeClass('view-ambos');
+        $mensal.hide();
+        $hora.hide();
+        $jornada.hide();
+
+        if (tipoEscolhido === 'ambos') {
+            $content.addClass('view-ambos');
+            $mensal.fadeIn(200);
+            $hora.fadeIn(200);
+            $jornada.fadeIn(200);
+        } else if (tipoEscolhido === 'mensal') {
+            $mensal.fadeIn(200);
+            $jornada.fadeIn(200);
+        } else if (tipoEscolhido === 'hora') {
+            $hora.fadeIn(200);
+            $jornada.fadeIn(200);
+        }
+    },
+
     gerarRelatorioDetalhado(valorHoraEscolhido) {
         const d = this.dadosCalculados;
         
@@ -245,6 +277,8 @@ const CalculadoraFreela = {
 
         $(this.SELECTORS.RELATORIO_DETALHADO).slideDown();
         $(this.SELECTORS.BTN_IMPRIMIR).fadeIn();
+        // ATUALIZADO: Chama a função para exibir o tipo de relatório correto
+        this.handleTipoRelatorioChange();
     },
 
     // --- MÉTODOS AUXILIARES ---
