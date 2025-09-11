@@ -1,0 +1,314 @@
+/* VARIÁVEIS GLOBAIS DE ESTILO E TEMAS */
+:root {
+    /* Tema Padrão: Azul Claro */
+    --primary: #4A90E2;
+    --primary-dark: #357ABD;
+    --primary-light: #e3f2fd;
+    --primary-text: #FFFFFF;
+    --success: #5CB85C;
+    --danger: #D9534F;
+    --text: #333333;
+    --text-light: #666666;
+    --white: #FFFFFF;
+    --background: #f8f9fa;
+    --surface: #FFFFFF;
+    --border: #DEE2E6;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light-pink"] {
+    --primary: #E91E63;
+    --primary-dark: #C2185B;
+    --primary-light: #fce4ec;
+    --primary-text: #FFFFFF;
+}
+
+[data-theme="dark-blue"] {
+    --primary: #58a6ff;
+    --primary-dark: #388bfd;
+    --primary-light: #1f6feb;
+    --primary-text: #FFFFFF;
+    --background: #0d1117;
+    --surface: #161b22;
+    --text: #c9d1d9;
+    --text-light: #8b949e;
+    --border: #30363d;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark-pink"] {
+    --primary: #f778ba;
+    --primary-dark: #f0429c;
+    --primary-light: #ff65b3;
+    --primary-text: #FFFFFF;
+    --background: #1a000e;
+    --surface: #2c001b;
+    --text: #fcd5ea;
+    --text-light: #e6a7c8;
+    --border: #590036;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+
+/* RESET E PADRÕES GLOBAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cabin', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* COLOQUE este novo código no lugar do que apagou */
+body {
+    display: grid; /* MUDANÇA PRINCIPAL: Usando Grid */
+    grid-template-rows: auto 1fr auto; /* Header | Conteúdo (cresce) | Footer */
+    min-height: 100vh;
+    margin: 0; /* Garante que não há margens padrão */
+
+    /* Estilos que permanecem os mesmos */
+    background-color: var(--background);
+    color: var(--text);
+    font-family: 'Cabin', sans-serif;
+    line-height: 1.6;
+    padding-top: 75px;
+}
+
+header {
+    /* O header precisa ser removido do fluxo do grid por ser 'fixed' */
+    /* Adicione esta propriedade para garantir que não interfira */
+    grid-row: 1; /* Ocupa a primeira linha definida */
+}
+
+footer {
+     /* Adicione esta propriedade para garantir que não interfira */
+    grid-row: 3; /* Ocupa a terceira linha definida */
+}
+
+/* ... o resto do seu ficheiro themes.css permanece igual ... */
+/* HEADER */
+header {
+    background-color: var(--surface);
+    box-shadow: var(--shadow);
+    border-bottom: 1px solid var(--border);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1030;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 75px;
+}
+
+.logo {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    transition: color 0.3s;
+    padding: 0.5rem 0;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+/* SELETOR DE TEMAS - ATUALIZADO */
+.theme-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* Aumentei o espaçamento */
+    margin-left: 1rem; /* Espaço para separar dos links de navegação */
+}
+
+.theme-switcher-label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.theme-buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.theme-button {
+    width: 24px; /* Ligeiramente maior */
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid var(--border);
+    transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white); /* Cor para os ícones */
+    font-size: 12px;
+}
+
+.theme-button:hover {
+    transform: scale(1.15); /* Efeito de hover mais notável */
+}
+
+.theme-button.active {
+    border-width: 3px; /* Borda mais grossa para o tema ativo */
+    border-color: var(--primary);
+    box-shadow: 0 0 8px var(--primary-light);
+}
+
+#theme-light-blue { background-color: #4A90E2; color: #fff; }
+#theme-light-pink { background-color: #E91E63; color: #fff; }
+#theme-dark-blue { background-color: #0d1117; border-color: #58a6ff; color: #58a6ff; }
+#theme-dark-pink { background-color: #1a000e; border-color: #f778ba; color: #f778ba;}
+
+/* BOTÕES GLOBAIS */
+.botao-acao, .botao-acao-anterior {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 8px; /* Mais arredondado */
+    padding: 0.85rem 1.75rem; /* Um pouco maior */
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.botao-acao {
+    background-color: var(--primary);
+    color: var(--primary-text);
+}
+
+.botao-acao:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.botao-acao-anterior {
+    background-color: transparent;
+    color: var(--text-light);
+    border: 1px solid var(--border);
+}
+
+.botao-acao-anterior:hover {
+    background-color: var(--border);
+    color: var(--text);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 2rem;
+    background-color: var(--surface);
+    border-top: 1px solid var(--border);
+}
+
+/* ... (Resto do seu CSS de footer, que já está bom) ... */
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--text);
+}
+
+.footer-nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-nav a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+    color: var(--primary);
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-social a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
+    transform: translateY(-3px);
+}
+
+.footer-copyright {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+        height: auto;
+        padding: 1rem;
+    }
+    body {
+        padding-top: 150px; /* Ajuste para header + temas */
+    }
+}

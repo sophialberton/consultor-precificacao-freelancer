@@ -122,3 +122,20 @@
     display: flex;
     justify-content: space-between;
 }
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between; /* Alinha um à esquerda e outro à direita */
+    align-items: center;
+    margin-top: 2rem; /* Aumenta o espaço acima dos botões */
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.proximo {
+    margin-left: auto; /* Joga para a direita */
+}
+
+.anterior + .proximo {
+    margin-left: 1rem;
+}

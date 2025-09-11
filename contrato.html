@@ -6,7 +6,9 @@
     <title>Gerador de Contrato Freelancer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/global.css">
+    
+    <link rel="stylesheet" href="assets/themes.css">
+
     <link rel="stylesheet" href="contrato.css">
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,600,700&display=swap" rel="stylesheet">
 </head>
@@ -18,6 +20,15 @@
                 <li><a href="calculadora.html">Calculadora</a></li>
                 <li><a href="contrato.html">Gerador de Contrato</a></li>
             </ul>
+            <div class="theme-switcher">
+                <span class="theme-switcher-label"><i class="fas fa-paint-brush"></i><span>Temas:</span></span>
+                <div class="theme-buttons-container">
+                    <div class="theme-button" id="theme-light-blue" title="Azul Claro"><i class="fas fa-sun"></i></div>
+                    <div class="theme-button" id="theme-light-pink" title="Rosa Claro"><i class="fas fa-sun"></i></div>
+                    <div class="theme-button" id="theme-dark-blue" title="Azul Escuro"><i class="fas fa-moon"></i></div>
+                    <div class="theme-button" id="theme-dark-pink" title="Rosa Escuro"><i class="fas fa-moon"></i></div>
+                </div>
+            </div>
         </nav>
     </header>
     
@@ -146,34 +157,20 @@
             </div>
         </div>
     </div>
-    <footer>
-    <div class="container footer-content">
-        <div class="footer-logo">
-            Consultor de Precificação Freelancer
+     <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">Consultor de Precificação Freelancer</div>
+            <div class="footer-nav"><a href="calculadora.html">Calculadora</a><a href="contrato.html">Gerador de Contrato</a></div>
+            <div class="footer-social">
+                 <a href="https://instagram.com/guaphia" target="_blank" title="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                <a href="https://linkedin.com/in/sophia-picasky-alberton" target="_blank" title="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                <a href="https://pinterest.com/guaphia" target="_blank" title="Pinterest"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.017 1.987c-5.424 0-8.913 3.486-8.913 8.02 0 3.204 1.96 6.038 4.88 7.21.507.216.63.33.433.856-.18 2.11-.734 3.482-.734 3.482s.272-.12.946-.51c.89-.51 1.628-1.24 2.13-2.028.56.24 1.16.36 1.78.36 4.72 0 8.56-4.26 8.56-9.52 0-4.9-3.9-8.84-9.142-8.84z"></path></svg></a>
+            </div>
         </div>
-
-        <div class="footer-nav">
-            <a href="calculadora.html">Calculadora</a>
-            <a href="contrato.html">Gerador de Contrato</a>
-        </div>
-
-        <div class="footer-social">
-            <a href="https://instagram.com/guaphia" target="_blank" title="Instagram">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-            </a>
-            <a href="https://linkedin.com/in/sophia-picasky-alberton" target="_blank" title="LinkedIn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-            </a>
-            <a href="https://pinterest.com/guaphia" target="_blank" title="Pinterest">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.017 1.987c-5.424 0-8.913 3.486-8.913 8.02 0 3.204 1.96 6.038 4.88 7.21.507.216.63.33.433.856-.18 2.11-.734 3.482-.734 3.482s.272-.12.946-.51c.89-.51 1.628-1.24 2.13-2.028.56.24 1.16.36 1.78.36 4.72 0 8.56-4.26 8.56-9.52 0-4.9-3.9-8.84-9.142-8.84z"></path></svg>
-            </a>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <p data-pt="© 2025 Sophia Alberton. Todos os direitos reservados." data-en="© 2025 Sophia Alberton. All rights reserved.">&copy; 2025 Sophia Alberton. Todos os direitos reservados.</p>
-    </div>
-</footer>
+        <div class="footer-copyright"><p>&copy; 2025 Sophia Alberton. Todos os direitos reservados.</p></div>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="contrato.js"></script>
+    <script src="assets/theme-switcher.js"></script>
 </body>
 </html>

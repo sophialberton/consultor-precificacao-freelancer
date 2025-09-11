@@ -375,4 +375,13 @@ fieldset:first-of-type {
         display: none;
         visibility: hidden;
     }
+
+    .action-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2.5rem; /* Aumentado de 2rem para 2.5rem para mais espaço */
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
 }
