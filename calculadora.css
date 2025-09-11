@@ -5,6 +5,8 @@
     box-shadow: var(--shadow);
     background-color: var(--white);
     padding: 20px 40px !important;
+    /* Define uma altura mínima para o card */
+    min-height: 650px; 
 }
 
 #heading {
@@ -179,8 +181,9 @@ fieldset:first-of-type {
     padding: 20px;
     margin-top: 2rem;
     text-align: center;
+    /* Adiciona uma margem inferior para afastar os botões */
+    margin-bottom: 2rem; 
 }
-
 .result-box-preview .result-value {
     font-size: 2.2rem;
     font-weight: 700;
@@ -376,12 +379,17 @@ fieldset:first-of-type {
         visibility: hidden;
     }
 
-    .action-buttons {
+.action-buttons {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 2.5rem; /* Aumentado de 2rem para 2.5rem para mais espaço */
+    /* Aumenta o espaço acima dos botões */
+    margin-top: 2rem; 
     padding-top: 1.5rem;
     border-top: 1px solid var(--border);
 }
+}
+
+#btn-imprimir {
+    margin-bottom: 1rem; /* Adiciona um espaço abaixo do botão de imprimir */
 }
