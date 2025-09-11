@@ -1,9 +1,5 @@
 $(document).ready(function() {
     const App = {
-        /**
-         * Coleta todos os dados do formulário e retorna um objeto.
-         * Fornece valores padrão para evitar erros no template.
-         */
         getFormData: function() {
             return {
                 // Dados das Partes
@@ -16,6 +12,7 @@ $(document).ready(function() {
 
                 // Dados do Projeto
                 projetoTitulo: $('#projeto-titulo').val() || "[TÍTULO DO PROJETO]",
+                projetoStatus: $('#projeto-status').val(),
                 projetoEscopo: $('#projeto-escopo').val().replace(/\n/g, '<br>') || "[ESCOPO DETALHADO AQUI]",
                 
                 // Prazos e Prioridade
@@ -29,6 +26,7 @@ $(document).ready(function() {
                 valorHora: parseFloat($('#valor-hora').val()) || 0,
                 horasProjeto: parseFloat($('#horas-projeto').val()) || 0,
                 taxaUrgencia: parseFloat($('#taxa-urgencia').val()) || 0,
+                horasExtras: parseFloat($('#horas-extras').val()) || 0,
 
                 // Pagamento
                 condicaoPagamentoKey: $('#condicao-pagamento').val(),
@@ -40,13 +38,9 @@ $(document).ready(function() {
             };
         },
 
-        /**
-         * Atualiza a interface, mostrando/escondendo campos e recalculando valores.
-         */
         updateUI: function() {
             const dados = this.getFormData();
             
-            // Alterna os campos de input de valor com base no método de cálculo
             if (dados.calcMetodo === 'projeto') {
                 $('#campos-valor-projeto').slideDown();
                 $('#campos-valor-horas').slideUp();
@@ -55,7 +49,6 @@ $(document).ready(function() {
                 $('#campos-valor-horas').slideDown();
             }
 
-            // Calcula o valor base e as horas estimadas
             let valorBase = 0;
             let horasEstimadas = 0;
 
@@ -69,7 +62,6 @@ $(document).ready(function() {
                 valorBase = horasEstimadas * dados.valorHora;
             }
 
-            // Calcula a taxa de urgência
             let valorUrgencia = 0;
             if (dados.prioridade === 'urgente') {
                 valorUrgencia = valorBase * (dados.taxaUrgencia / 100);
@@ -78,21 +70,18 @@ $(document).ready(function() {
                 $('#urgencia-box').slideUp();
             }
             
-            const valorTotalFinal = valorBase + valorUrgencia;
+            const valorExtras = dados.horasExtras * dados.valorHora * 1.5;
+            const valorTotalFinal = valorBase + valorUrgencia + valorExtras;
 
-            // Exibe os totais no resumo
             $('#horas-estimadas').text(horasEstimadas.toFixed(1).replace('.', ',') + 'h');
             $('#valor-base').text(this.formatarMoeda(valorBase));
             $('#valor-urgencia').text(this.formatarMoeda(valorUrgencia));
+            $('#valor-extras').text(this.formatarMoeda(valorExtras));
             $('#valor-total-final').text(this.formatarMoeda(valorTotalFinal));
 
-            // Gera e exibe o detalhamento do pagamento
             this.detalharPagamento(valorTotalFinal, dados.condicaoPagamentoKey);
         },
 
-        /**
-         * Gera o HTML com o detalhamento das parcelas de pagamento.
-         */
         detalharPagamento: function(valorTotal, condicao) {
             let html = '<h6>Detalhamento do Pagamento:</h6>';
             if (valorTotal <= 0) {
@@ -119,20 +108,20 @@ $(document).ready(function() {
             $('#detalhamento-pagamento').html(html);
         },
 
-        /**
-         * Monta o texto final do contrato usando os dados do formulário.
-         */
         gerarContrato: function() {
-            this.updateUI(); // Garante que a UI e os cálculos estão sempre em sincronia
+            this.updateUI();
             const dados = this.getFormData();
             const valorTotalFinal = parseFloat($('#valor-total-final').text().replace(/[R$\s.]/g, '').replace(',', '.'));
             const horasEstimadasTexto = $('#horas-estimadas').text();
-            
             const detalhamentoPagamentoHtml = $('#detalhamento-pagamento').html();
+            
+            const clausulaObjeto = dados.projetoStatus === 'a-entregar'
+                ? `O objeto do presente contrato é a prestação de serviços de "${dados.projetoTitulo}", a serem realizados pelo(a) CONTRATADO(A), compreendendo o seguinte escopo:`
+                : `O objeto do presente contrato é a entrega do projeto finalizado de "${dados.projetoTitulo}", cujo escopo compreende:`;
 
             let clausulaUrgencia = "";
             if (dados.prioridade === 'urgente') {
-                clausulaUrgencia = `<p><strong>Parágrafo Único:</strong> Fica estabelecido que este projeto possui caráter de urgência, resultando em uma taxa de <strong>${dados.taxaUrgencia}%</strong> sobre o valor base, já inclusa no valor total.</p>`;
+                clausulaUrgencia = `<p><strong>Parágrafo Único:</strong> Fica estabelecido que este projeto possui caráter de urgência, resultando em uma taxa de <strong>${dados.taxaUrgencia}%</strong> sobre o valor base, e um valor adicional de <strong>${this.formatarMoeda(dados.horasExtras * dados.valorHora * 1.5)}</strong> referente a <strong>${dados.horasExtras}</strong> horas extras, já inclusos no valor total.</p>`;
             }
 
             const template = `
@@ -143,7 +132,7 @@ $(document).ready(function() {
                 <p><strong>CONTRATADO(A):</strong> ${dados.freelancerNome}, com documento (CPF/CNPJ) nº ${dados.freelancerDoc}, com sede em ${dados.freelancerEnd}.</p>
                 <hr>
                 <p><strong>CLÁUSULA 1ª - DO OBJETO</strong></p>
-                <p>O objeto do presente contrato é a prestação de serviços de "${dados.projetoTitulo}", a serem realizados pelo(a) CONTRATADO(A), compreendendo o seguinte escopo:</p>
+                <p>${clausulaObjeto}</p>
                 <p>${dados.projetoEscopo}</p>
                 <hr>
                 <p><strong>CLÁUSULA 2ª - DOS PRAZOS E DEDICAÇÃO</strong></p>
@@ -172,12 +161,8 @@ $(document).ready(function() {
             $('#contrato-gerado').html(template);
         },
         
-        /**
-         * Copia o conteúdo do contrato para a área de transferência do usuário.
-         */
         copiarContrato: function() {
             const contratoHtml = $('#contrato-gerado').html();
-            // Converte o HTML para um texto mais limpo para colar em editores
             const contratoTexto = contratoHtml
                 .replace(/<br>/g, '\n')
                 .replace(/<hr>/g, '\n----------------------------------------\n')
@@ -185,7 +170,7 @@ $(document).ready(function() {
                 .replace(/<p><strong>(.*?)<\/strong>(.*?)<\/p>/g, '**$1**$2\n')
                 .replace(/<strong>/g, '**').replace(/<\/strong>/g, '**')
                 .replace(/<p>|<\/p>|<div.*?>|<\/div>/g, '')
-                .replace(/\n\s*\n/g, '\n') // Remove linhas em branco extras
+                .replace(/\n\s*\n/g, '\n')
                 .trim();
 
             navigator.clipboard.writeText(contratoTexto).then(() => {
@@ -198,15 +183,12 @@ $(document).ready(function() {
 
         // Funções auxiliares
         formatarData: (data) => data ? data.split('-').reverse().join('/') : "a ser definida",
-        formatarMoeda: (valor) => valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+        formatarMoeda: (valor) => (valor || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
 
-        /**
-         * Inicializa a aplicação, adicionando os event listeners.
-         */
         init: function() {
             $('#form-contrato').on('keyup change', 'input, textarea, select', this.gerarContrato.bind(this));
             $('#btn-copiar').on('click', this.copiarContrato.bind(this));
-            this.gerarContrato(); // Gera um preview inicial ao carregar a página
+            this.gerarContrato(); // Gera um preview inicial
         }
     };
 

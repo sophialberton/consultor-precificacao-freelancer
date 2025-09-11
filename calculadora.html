@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultor de Precificação Freelancer</title>
 
-    <!-- Estilos -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/global.css">
@@ -15,7 +14,6 @@
 </head>
 
 <body>
-    <!-- Cabeçalho -->
     <header>
         <nav>
             <div class="logo">Consultor de Precificação Freelancer</div>
@@ -26,7 +24,6 @@
         </nav>
     </header>
 
-    <!-- Container Principal -->
     <div class="container-fluid py-5">
         <div class="row justify-content-center">
             <div class="col-11 col-sm-10 col-md-8 col-lg-7 col-xl-6 text-center p-0">
@@ -34,9 +31,7 @@
                     <h2 id="heading">Encontre Seu Valor de Hora Justo</h2>
                     <p>Uma análise completa para uma precificação profissional.</p>
 
-                    <!-- Formulário Multi-etapas -->
                     <form id="formulario-calculadora">
-                        <!-- Barra de Progresso -->
                         <ul id="barra-progresso">
                             <li class="ativo" id="passo1"><strong>Custos e Metas</strong></li>
                             <li id="passo2"><strong>Posicionamento</strong></li>
@@ -46,7 +41,6 @@
                             <div class="progress-bar" role="progressbar" style="width: 33.33%"></div>
                         </div>
 
-                        <!-- ETAPA 1: Custos e Metas Financeiras -->
                         <fieldset>
                             <div class="fieldset-content">
                                 <div class="row mb-4">
@@ -95,7 +89,6 @@
                             <input type="button" name="proximo" class="proximo botao-acao" value="Analisar Posicionamento" />
                         </fieldset>
 
-                        <!-- ETAPA 2: Posicionamento de Mercado -->
                         <fieldset>
                              <div class="fieldset-content">
                                 <div class="row mb-4">
@@ -107,23 +100,23 @@
                                 <div class="form-group">
                                     <label for="nivel-experiencia">Qual seu nível de experiência?</label>
                                     <select id="nivel-experiencia" class="form-control">
+                                        <option value="" selected disabled>Selecione seu nível</option>
                                         <option value="iniciante">Iniciante (Até 2 anos)</option>
-                                        <option value="intermediario" selected>Intermediário (2 a 5 anos)</option>
+                                        <option value="intermediario">Intermediário (2 a 5 anos)</option>
                                         <option value="avancado">Avançado / Especialista (+5 anos)</option>
                                     </select>
                                 </div>
 
-                                <div class="result-box-preview">
-                                    <p>Seu valor-hora de CUSTO é:</p>
+                                <div class="result-box-preview" style="display: none;">
+                                    <p>Seu valor-hora de CUSTO (ponto de equilíbrio) é:</p>
                                     <div class="result-value" id="previa-valor-hora-custo">R$ 0,00</div>
-                                    <small>Este é seu ponto de equilíbrio, sem lucro.</small>
+                                    <small>Este é o valor mínimo para cobrir seus custos e salário, sem lucro.</small>
                                 </div>
                             </div>
                             <input type="button" name="anterior" class="anterior botao-acao-anterior" value="Voltar" />
                             <input type="button" name="proximo" class="proximo botao-acao" value="Gerar Relatório Final" />
                         </fieldset>
 
-                        <!-- ETAPA 3: Relatório Final -->
                         <fieldset>
                             <div class="fieldset-content">
                                 <div class="row mb-4">
@@ -131,35 +124,45 @@
                                     <div class="col-5 text-end"><h2 class="steps">Passo 3 de 3</h2></div>
                                 </div>
 
-                                <!-- Seleção de Valor/Hora -->
                                 <div class="cartilha-section">
                                     <h4>1. Escolha seu Valor/Hora para simulação</h4>
                                     <div id="valor-hora-sugestoes" class="final-values-selector">
-                                        <!-- Opções serão inseridas pelo JS -->
-                                    </div>
+                                        </div>
                                 </div>
                                 
-                                <!-- Relatório Detalhado (inicialmente oculto) -->
                                 <div id="cartilha-detalhada" class="cartilha-impressao" style="display: none;">
                                     <div class="cartilha-header">
-                                        <h3>Diagnóstico Financeiro Mensal</h3>
+                                        <h3>Diagnóstico Financeiro</h3>
                                         <p>Baseado em um valor/hora de <strong id="cartilha-valor-hora-escolhido">R$ 0,00</strong></p>
                                     </div>
                                     
                                     <div class="cartilha-section">
-                                        <h4>Demonstrativo de Resultados</h4>
-                                        <p class="entrada"><span>(+) Valor Bruto Total (Faturamento):</span> <strong id="cartilha-bruto">R$ 0,00</strong></p>
+                                        <h4>Visão Mensal (se trabalhar o mês inteiro)</h4>
+                                        <p class="entrada"><span>(+) Faturamento Bruto:</span> <strong id="cartilha-bruto-mensal">R$ 0,00</strong></p>
                                         <p class="saida"><span>(-) Custos Fixos:</span> <strong id="cartilha-custos-fixos">R$ 0,00</strong></p>
                                         <p class="saida"><span>(-) Benefícios:</span> <strong id="cartilha-beneficios">R$ 0,00</strong></p>
                                         <p class="saida"><span>(-) Provisão (13º e Férias):</span> <strong id="cartilha-provisao">R$ 0,00</strong></p>
                                         <p class="saida"><span>(-) Impostos (<span id="cartilha-imposto-percent">0</span>%):</span> <strong id="cartilha-impostos-valor">R$ 0,00</strong></p>
-                                        <p class="total liquido"><span>(=) Valor Líquido (Seu Salário):</span> <strong id="cartilha-liquido">R$ 0,00</strong></p>
+                                        <p class="total liquido"><span>(=) Salário Líquido:</span> <strong id="cartilha-liquido-mensal">R$ 0,00</strong></p>
                                     </div>
+                                    
+                                    <div class="cartilha-section">
+                                        <h4>Visão por Hora Trabalhada</h4>
+                                        <p><span>Valor Bruto (cobrado do cliente):</span> <strong id="cartilha-bruto-hora">R$ 0,00</strong></p>
+                                        <p><span>- Custos:</span> <strong id="cartilha-custos-hora">R$ 0,00</strong></p>
+                                        <p><span>- Benefícios:</span> <strong id="cartilha-beneficios-hora">R$ 0,00</strong></p>
+                                        <p><span>- Provisão:</span> <strong id="cartilha-provisao-hora">R$ 0,00</strong></p>
+                                        <p><span>- Impostos:</span> <strong id="cartilha-impostos-hora">R$ 0,00</strong></p>
+                                        <p class="total"><span>(=) Valor Líquido (seu lucro):</span> <strong id="cartilha-liquido-hora">R$ 0,00</strong></p>
+                                        <hr>
+                                        <p><span>Valor da Hora Extra (50%):</span> <strong id="cartilha-extra-hora">R$ 0,00</strong></p>
+                                    </div>
+
 
                                     <div class="cartilha-section">
                                         <h4>Jornada de Referência</h4>
                                         <p><span>Jornada:</span> <span id="cartilha-jornada-texto">--</span></p>
-                                        <p><span>Horas Produtivas / Mês:</span> <strong id="cartilha-horas-mes">0h</strong></p>
+                                        <p><span>Horas Produtivas / Dia Útil:</span> <strong id="cartilha-horas-dia">0h</strong></p>
                                     </div>
                                 </div>
 
@@ -175,7 +178,6 @@
         </div>
     </div>
 
-    <!-- Rodapé -->
     <footer>
     <div class="container footer-content">
         <div class="footer-logo">
@@ -204,9 +206,7 @@
     </div>
 </footer>
 
-    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="calculadora.js"></script>
 </body>
 </html>
-

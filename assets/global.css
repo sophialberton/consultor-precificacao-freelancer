@@ -21,57 +21,61 @@
 }
 
 body {
-    background-color: var(--background); /* Fundo estático e limpo */
+    background-color: var(--background);
     color: var(--text);
     line-height: 1.6;
+    /* ADICIONADO: Espaçamento no topo para não ficar atrás do header fixo */
+    padding-top: 75px; 
 }
 
-/*
-body {
-    background: linear-gradient(-45deg, #d874d8, #e73c7e, #66c1e2, #d52338);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-    height: 100vh;
+/* HEADER - SOLUÇÃO DEFINITIVA */
+header {
+    background-color: var(--primary);
+    box-shadow: var(--shadow);
+    /* ALTERADO: De 'sticky' para 'fixed' para forçar a ficar por cima */
+    position: fixed;   
+    top: 0;
+    left: 0; 
+    width: 100%;
+    z-index: 1030; /* Z-index mais alto que o padrão do Bootstrap para garantir */
 }
 
-@keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-*/
-
-/* HEADER */
-
-
-header h1 {
-    margin: 0;
-    font-weight: 600;
-}
-
-/* LINKS DE NAVEGAÇÃO */
-.nav-links {
-    margin-top: 1rem;
+nav {
     display: flex;
-    justify-content: center;
-    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* ADICIONADO: Altura definida para o cálculo do padding-top do body */
+    height: 75px; 
+}
+
+.logo {
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--white);
-    padding: 0.5rem 1.25rem;
-    border: 1px solid transparent;
-    border-radius: 20px;
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: color 0.3s;
+    padding: 0.5rem 0;
 }
 
 .nav-links a:hover {
-    background-color: var(--white);
-    color: var(--primary);
-    transform: translateY(-2px);
+    color: #e0e0e0;
 }
+
 
 /* BOTÕES GLOBAIS */
 .botao-acao, .botao-acao-anterior {
@@ -109,36 +113,22 @@ header h1 {
 /* FOOTER */
 footer {
     text-align: center;
-    padding: 1.5rem;
-    color: var(--text-light);
-    font-size: 0.9rem;
+    padding: 2rem 1rem;
     margin-top: 2rem;
+    background-color: var(--white);
     border-top: 1px solid var(--border);
-}
-
-/*
-.cursor, .cursor2 { display: none; }
-*/
-
-/* ========================================= */
-/* ESTILOS PARA O RODAPÉ (FOOTER)            */
-/* ========================================= */
-
-footer {
-    text-align: center;
-    padding: 2rem 1rem; /* Padding vertical e horizontal */
-    margin-top: 2rem;
-    background-color: var(--card-bg);
-    border-top: 1px solid var(--secondary);
 }
 
 .footer-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap; /* Permite que os itens quebrem a linha em telas menores */
-    gap: 1.5rem; /* Espaçamento entre os elementos */
+    flex-wrap: wrap;
+    gap: 1.5rem;
     margin-bottom: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .footer-logo {
@@ -175,67 +165,40 @@ footer {
     width: 40px;
     height: 40px;
     background-color: var(--background);
-    border: 1px solid var(--secondary);
-    border-radius: 50%; /* Deixa o link circular */
-    color: var(--accent);
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    color: var(--text-light);
+    transition: all 0.3s ease;
 }
 
 .footer-social a:hover {
-    background-color: var(--accent);
-    border-color: var(--accent);
-    color: var(--card-bg); /* Cor do ícone no hover */
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: var(--white);
     transform: translateY(-3px);
 }
 
 .footer-copyright {
     padding-top: 1.5rem;
-    border-top: 1px solid var(--secondary);
+    border-top: 1px solid var(--border);
     font-size: 0.9rem;
-    color: var(--secondary);
+    color: var(--text-light);
 }
 
-/* Responsividade para o rodapé */
 @media (max-width: 768px) {
     .footer-content {
-        flex-direction: column; /* Empilha os itens verticalmente */
+        flex-direction: column;
         justify-content: center;
         text-align: center;
     }
-}
-header {
-    background-color: var(--primary);
-    box-shadow: var(--shadow);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    width: 100%;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1.5rem;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text);
-    font-weight: 700;
-    transition: color 0.3s;
-}
-
-.nav-links a:hover {
-    color: var(--primary);
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+        height: auto; /* Ajuste para mobile */
+        padding: 1rem;
+    }
+    body {
+        /* Ajusta o padding para a altura do header em mobile */
+        padding-top: 120px; 
+    }
 }

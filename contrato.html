@@ -49,6 +49,13 @@
                             <label for="projeto-titulo" class="form-label">Título do Projeto</label>
                             <input type="text" class="form-control" id="projeto-titulo" placeholder="Ex: Desenvolvimento de E-commerce">
                         </div>
+                         <div class="mb-3">
+                            <label for="projeto-status" class="form-label">Status do Projeto</label>
+                            <select id="projeto-status" class="form-select">
+                                <option value="a-entregar">O projeto será entregue</option>
+                                <option value="entregue">O projeto já está pronto/foi entregue</option>
+                            </select>
+                        </div>
                         <div class="mb-3">
                             <label for="projeto-escopo" class="form-label">Escopo e Entregáveis</label>
                             <textarea class="form-control" id="projeto-escopo" rows="5" placeholder="Liste detalhadamente tudo que será entregue..."></textarea>
@@ -76,25 +83,37 @@
                             </div>
                         </div>
                         
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="valor-hora" class="form-label">Seu Valor/Hora (R$)</label>
+                                <small class="form-text text-muted d-block mb-1">Base para calcular horas e extras.</small>
+                                <input type="number" class="form-control" id="valor-hora" placeholder="100" required>
+                            </div>
+                        </div>
+                        
                         <div id="campos-valor-projeto">
                             <div class="mb-3"><label for="valor-projeto-fixo" class="form-label">Valor Fixo do Projeto (R$)</label><input type="number" class="form-control" id="valor-projeto-fixo" placeholder="5000"></div>
                         </div>
                         <div id="campos-valor-horas" style="display: none;">
-                            <div class="row">
-                                <div class="col-md-6 mb-3"><label for="valor-hora" class="form-label">Seu Valor/Hora (R$)</label><input type="number" class="form-control" id="valor-hora" placeholder="100"></div>
-                                <div class="col-md-6 mb-3"><label for="horas-projeto" class="form-label">Total de Horas Estimadas</label><input type="number" class="form-control" id="horas-projeto" placeholder="50"></div>
-                            </div>
+                             <div class="mb-3"><label for="horas-projeto" class="form-label">Total de Horas Estimadas</label><input type="number" class="form-control" id="horas-projeto" placeholder="50"></div>
                         </div>
 
-                        <div id="urgencia-box" class="mb-3" style="display: none;">
-                            <label for="taxa-urgencia" class="form-label">Taxa de Urgência (%)</label>
-                            <input type="number" class="form-control" id="taxa-urgencia" value="20">
+                        <div id="urgencia-box" class="row" style="display: none;">
+                             <div class="col-md-6 mb-3">
+                                <label for="taxa-urgencia" class="form-label">Taxa de Urgência (%)</label>
+                                <input type="number" class="form-control" id="taxa-urgencia" value="20">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="horas-extras" class="form-label">Horas Extras Trabalhadas</label>
+                                <input type="number" class="form-control" id="horas-extras" placeholder="0">
+                            </div>
                         </div>
                         
                         <div class="value-summary">
                             <p>Horas estimadas para o projeto: <strong id="horas-estimadas">0h</strong></p>
                             <p>Valor base do projeto: <strong id="valor-base">R$ 0,00</strong></p>
                             <p>Taxa de urgência: <strong id="valor-urgencia">R$ 0,00</strong></p>
+                            <p>Valor horas extras (50%): <strong id="valor-extras">R$ 0,00</strong></p>
                             <p class="total">Valor total final: <strong id="valor-total-final">R$ 0,00</strong></p>
                         </div>
 
