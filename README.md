@@ -2,7 +2,7 @@
 # 💰 Calculadora de Hora para Freelas
 
 Uma calculadora online desenvolvida para ajudar freelancers a descobrirem o valor ideal da sua hora de trabalho, com base em seus objetivos financeiros, rotina de trabalho e custos.
-✉️ [***Acessar site***](https://l1nq.com/consultor-precificacao-freelancer)<br>
+✉️ [***Acessar site***](https://sophialberton.github.io/consultor-precificacao-freelancer/)<br>
 ---
 
 ## 🚀 Objetivo
@@ -105,3 +105,4 @@ Desenvolvido por **Sophia Picasky Alberton**
 
 
 ---
+
